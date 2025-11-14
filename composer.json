@@ -17,10 +17,10 @@
   },
   "autoload": {
     "psr-4": {
-      "Dejanlazic314\\CnctoolshopBasic\\": "src/"
+      "Cnctoolshop\\": "src/"
     }
   },
   "extra": {
-    "contao-manager-plugin": "Dejanlazic314\\CnctoolshopBasic\\ContaoManager\\Plugin"
+    "contao-manager-plugin": "Cnctoolshop\\ContaoManager\\Plugin"
   }
 }
