@@ -1,0 +1,26 @@
+{
+  "name": "dejanlazic314/cnctoolshop-basic",
+  "type": "contao-bundle",
+  "description": "CNC Tool Shop Basic Bundle",
+  "license": "proprietary",
+  "homepage": "https://github.com/dejanlazic314/cnctoolshop-basic",
+  "authors": [
+    {
+      "name": "Dejan Lazic",
+      "email": "dejan.lazic314@gmail.com",
+      "role": "Developer"
+    }
+  ],
+  "require": {
+    "php": "^8.1",
+    "contao/core-bundle": "^5.3"
+  },
+  "autoload": {
+    "psr-4": {
+      "Dejanlazic314\\CnctoolshopBasic\\": "src/"
+    }
+  },
+  "extra": {
+    "contao-manager-plugin": "Dejanlazic314\\CnctoolshopBasic\\ContaoManager\\Plugin"
+  }
+}
