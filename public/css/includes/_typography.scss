@@ -1,0 +1,132 @@
+@mixin display {
+    font-family: $font-primary;
+    font-size: clamp(2.625rem, #{'1.719rem + 2.5vw'}, 4.5rem); /* 42px -> 72px */
+    line-height: 1.1;
+    letter-spacing: -0.045rem;
+    color: $petrol-dark;
+}
+
+@mixin headline-1 {
+    font-family: $font-primary;
+    font-size: clamp(2.0625rem, #{'1.398rem + 1.833vw'}, 3.4375rem); /* 33px -> 55px */
+    line-height: 1.2;
+    letter-spacing: -0.034rem;
+    color: $petrol-dark;
+}
+
+@mixin headline-2 {
+    font-family: $font-primary;
+    font-size: clamp(1.8125rem, #{'1.48rem + 0.917vw'}, 2.5rem); /* 29px -> 40px */
+    line-height: 1.2;
+    letter-spacing: -0.025rem;
+    color: $petrol-dark;
+}
+
+@mixin headline-3 {
+    font-family: $font-primary;
+    font-size: clamp(1.625rem, #{'1.383rem + 0.667vw'}, 2.125rem); /* 26px -> 34px */
+    line-height: 1.2;
+    letter-spacing: -0.021rem;
+    color: $petrol-dark;
+}
+
+@mixin headline-4 {
+    font-family: $font-primary;
+    font-size: clamp(1.25rem, #{'1.008rem + 0.667vw'}, 1.75rem); /* 20px -> 28px */
+    line-height: 1.2;
+    letter-spacing: -0.018rem;
+    color: $petrol-dark;
+}
+
+@mixin headline-5 {
+    font-family: $font-primary;
+    font-size: clamp(1.125rem, #{'1.004rem + 0.333vw'}, 1.375rem); /* 18px -> 22px */
+    line-height: 1.2;
+    letter-spacing: -0.014rem;
+    color: $petrol-dark;
+}
+
+@mixin caption($size: m) {
+    font-family: $font-secondary;
+    line-height: 1.4;
+    color: $petrol-dark;
+    
+    @if $size == l {
+        font-size: clamp(1.0938rem, #{'1.018rem + 0.208vw'}, 1.25rem); /* 17.5px -> 20px */
+    } @else {
+        font-size: 1rem; /* 16px -> 16px */
+    }
+}
+
+@mixin body-font($size: m) {
+    font-family: $font-secondary;
+    line-height: 1.4;
+    letter-spacing: 0.01rem;
+    color: $petrol-dark;
+    
+    @if $size == l {
+        font-size: clamp(1.1875rem, #{'1.036rem + 0.417vw'}, 1.5rem); /* 19px -> 24px */
+    } @else if $size == s {
+        font-size: 1rem; /* 16px -> 16px */
+    } @else {
+        font-size: clamp(1.0938rem, #{'1.018rem + 0.208vw'}, 1.25rem); /* 17.5px -> 20px */
+    }
+}
+
+@mixin label {
+    font-family: $font-secondary;
+    font-size: clamp(1.0625rem, #{'1.032rem + 0.083vw'}, 1.125rem); /* 17px -> 18px */
+    line-height: 1.3;
+    color: $petrol-dark;
+}
+
+@mixin btn($variant: primary) {
+    @include label;
+    font-weight: $fw-bold;
+    line-height: 1;
+    color: $light-grey;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    padding: 1.25rem;
+    border: none;
+    border-radius: $edge-radius-small;
+    text-decoration: none;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.3s ease;
+
+    svg path {
+        stroke:$white;
+    }
+
+    @if $variant == primary {
+        background: $motovers-magenta;
+
+        &:hover {
+            background: darken($motovers-magenta, 13%);
+        }
+    }
+
+    @if $variant == secondary {
+        background: $petrol-dark;
+        padding-inline: 2.5rem;
+
+        &:hover {
+            background: $petrol;
+        }
+    }
+
+    @if $variant == text {
+        color: $petrol;
+        background: transparent;
+        padding: 0;
+        gap:1.25rem;
+
+        svg path {
+            stroke:$motovers-magenta;
+        }
+    }
+}
+

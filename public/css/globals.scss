@@ -1,0 +1,199 @@
+@import 'includes/includes.scss';
+
+// Font Includes
+
+@font-face {
+  font-family: 'Merriweather';
+  src: url('../fonts/Merriweather-Regular.woff2') format('woff2'),
+    url('../fonts/Merriweather-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Merriweather';
+  src: url('../fonts/Merriweather-SemiBold.woff2') format('woff2'),
+    url('../fonts/Merriweather-SemiBold.woff') format('woff');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Merriweather';
+  src: url('../fonts/Merriweather-Bold.woff2') format('woff2'),
+    url('../fonts/Merriweather-Bold.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Work Sans';
+  src: url('../fonts/WorkSans-Regular.woff2') format('woff2'),
+    url('../fonts/WorkSans-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Work Sans';
+  src: url('../fonts/WorkSans-SemiBold.woff2') format('woff2'),
+    url('../fonts/WorkSans-SemiBold.woff') format('woff');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Work Sans';
+  src: url('../fonts/WorkSans-Bold.woff2') format('woff2'),
+    url('../fonts/WorkSans-Bold.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+html {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  width: 100%;
+  height: 100%;
+  text-size-adjust: 100%;
+  font-family: $font-primary;
+  font-size: $rem;
+  line-height: 1;
+
+  &:after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-color: rgba(black, 80%);
+    visibility: hidden;
+    opacity: 0;
+    z-index: 98;
+    transition: all 0.5s ease;
+  }
+
+  &.body-overlay {
+    position: fixed;
+    overflow-y: scroll;
+    width: 100%;
+
+    &:after {
+      visibility: visible;
+      opacity: 1;
+    }
+  }
+}
+
+h1 {
+  @include headline-1;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+h2 {
+  @include headline-2;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+h3 {
+  @include headline-3;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+h4 {
+  @include headline-4;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+h5 {
+  @include headline-5;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+p {
+  @include body-font;
+  margin-bottom: $spacing-section-m;
+  opacity: 0.8;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+b,
+strong {
+  font-weight: $fw-bold;
+}
+
+a {
+  text-decoration-color: $motovers-magenta;
+  transition: color 0.3s ease;
+
+  &:hover {
+    color: $motovers-magenta;
+  }
+}
+
+small {
+  @include label;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  vertical-align: middle;
+  border-style: none;
+}
+
+figcaption {
+  margin-top: 1em;
+}
+
+ul {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  margin-bottom: $spacing-section-m;
+  list-style: initial;
+  opacity: 0.8;
+
+  @include breakpoint-min($min-tablet-s) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem 1.875rem;
+  }
+
+  li {
+    @include body-font(m);
+    padding-left: 0.5rem;
+    margin-left: 1.25rem;
+
+    &::marker {
+      margin-right: 1rem;
+      color: $motovers-magenta;
+    }
+  }
+}
+
+:focus-visible {
+  outline: 2px solid $motovers-magenta;
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+:focus:not(:focus-visible) {
+  outline: none;
+}

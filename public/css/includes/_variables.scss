@@ -1,0 +1,95 @@
+// Colors
+$white: #ffffff;
+$petrol: #28414d;
+$petrol-dark-20: #d0d2d3;
+$petrol-dark: #131f25;
+$motovers-magenta: #ff1a92;
+$light-grey: #eff2f5;
+
+$calm: #edede8;
+$lime: #c3ea1c;
+$calm-dark: #e1e1d9;
+$motovers-light: #ff80c3;
+$cold-white: #f2f6f8;
+$purple: #43192f;
+
+// Typography
+$font-primary: 'Merriweather', sans-serif;
+$font-secondary: 'Work Sans', sans-serif;
+
+/* 
+$font-primary: 'Merriweather', serif;
+$font-secondary: 'Work Sans', sans-serif;
+$font-primary: 'Cormorant Garamond', serif;
+$font-secondary: 'Inter', sans-serif;
+$font-primary: 'Playfair Display', serif;
+$font-secondary: 'Nunito Sans', sans-serif;
+$font-primary: 'Lora', serif;
+$font-secondary: 'Poppins', sans-serif;
+ */
+
+$fw-regular: 400;
+$fw-semibold: 600;
+$fw-bold: 700;
+
+$rem: 16px;
+
+$text-alpha: 0.85;
+
+// Radius
+$default-radius: 8px;
+$edge-radius-small: 12px;
+$edge-radius-big: 20px;
+
+// Breakpoints
+$max-mobile-s: 413.98px;
+$max-mobile-m: 579.98px;
+$max-tablet-s: 719.98px;
+$max-tablet-m: 1079.98px;
+$max-laptop-s: 1279.98px;
+$max-laptop-m: 1512.98px;
+$max-fhd: 1920.98px;
+$max-container: 1940.98px;
+
+$min-mobile-s: 414px;
+$min-mobile-m: 580px;
+$min-tablet-s: 720px;
+$min-tablet-m: 1080px;
+$min-laptop-s: 1280px;
+$min-laptop-m: 1513px;
+$min-fhd: 1921px;
+$min-container: 1941px;
+
+// Spacing Variables
+$spacing-section-m: clamp(
+  1.875rem,
+  #{'1.604rem + 0.746vw'},
+  2.5rem
+); /* 30px -> 40px */
+$spacing-section-l: clamp(
+  3.75rem,
+  #{'3.209rem + 1.493vw'},
+  5rem
+); /* 60px -> 80px */
+$spacing-section-xl: clamp(
+  5.625rem,
+  #{'4.813rem + 2.239vw'},
+  7.5rem
+); /* 90px -> 120px */
+$spacing-section-xxl: clamp(
+  7.5rem,
+  #{'6.418rem + 2.985vw'},
+  10rem
+); /* 120px -> 160px */
+$margin: clamp(1.25rem, #{'-1.726rem + 8.209vw'}, 8.125rem); /* 20px -> 130px */
+$margin-off: clamp(
+  0.625rem,
+  #{'-0.457rem + 2.985vw'},
+  3.125rem
+); /* 10px -> 50px */
+$padding-off: clamp(1.5rem, #{'-0.015rem + 4.179vw'}, 5rem); /* 24px -> 80px */
+$spacing-hl-label: clamp(
+  2.5rem,
+  #{'2.229rem + 0.746vw'},
+  3.125rem
+); /* 40px -> 50px */
