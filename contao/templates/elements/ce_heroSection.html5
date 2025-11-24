@@ -1,0 +1,27 @@
+<?php
+    use Magmell\Contao\Basic\VHUGUtil;
+    VHUGUtil::include_css('bundles/motovers/css/elements/ce_textcustom.scss|static');
+?>
+
+<?php if ($this->layoutType == 'two-column'): ?>
+    <div class="hero-section two-column <?= implode(' ', $this->classes) ?>">
+        <div class="hero-content">
+            <h1><?= $this->headline ?></h1>
+            <?php if ($this->text): ?>
+                <?= $this->text ?>
+            <?php endif; ?>
+        </div>
+        <div class="hero-image">
+            <?= $this->insert('image', $this->arrData) ?>
+        </div>
+    </div>
+<?php else: ?>
+    <div class="hero-section background <?= implode(' ', $this->classes) ?>" style="background-image: url('<?= $this->singleSRC ?>')">
+        <div class="hero-content">
+            <h1><?= $this->headline ?></h1>
+            <?php if ($this->text): ?>
+                <?= $this->text ?>
+            <?php endif; ?>
+        </div>
+    </div>
+<?php endif; ?>
