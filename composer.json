@@ -13,11 +13,30 @@
   ],
   "require": {
     "php": "^8.1",
-    "contao/core-bundle": "^5.3"
+    "contao/core-bundle": "^5.3",
+    "vonheldenundgestalten/contao-basic": "^5.3",
+    "vonheldenundgestalten/contao-inserttags": "^5.3",
+    "mvo/contao-group-widget": "^1.5"
   },
   "autoload": {
     "psr-4": {
       "Cnctoolshop\\": "src/"
+    },
+    "classmap": [
+      "contao/"
+    ],
+    "exclude-from-classmap": [
+      "contao/config/",
+      "contao/dca/",
+      "contao/languages/",
+      "contao/templates/"
+    ]
+  },
+  "config": {
+    "allow-plugins": {
+      "contao-components/installer": true,
+      "contao/manager-plugin": true,
+      "php-http/discovery": false
     }
   },
   "extra": {

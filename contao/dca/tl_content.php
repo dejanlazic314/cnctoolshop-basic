@@ -3,6 +3,7 @@
 // Palette
 $GLOBALS['TL_DCA']['tl_content']['palettes']['heroSection'] = '{type_legend},type;{layout_legend},layoutType;{headline_legend},overheadline,headline;{text_legend},textOptional;{image_legend},singleSRC;{link_legend},url,linkTitle,secondUrl,secondLinkTitle;{protected_legend:hide},protected;{expert_legend:hide},cssID;{invisible_legend:hide},invisible,start,stop';
 
+
 // Fields
 // Layout Type
 $GLOBALS['TL_DCA']['tl_content']['fields']['layoutType'] = [

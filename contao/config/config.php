@@ -18,5 +18,5 @@ $GLOBALS['TL_CTE']['includes']['teaser'] = \Contao\ContentTeaser::class;
 $GLOBALS['TL_CTE']['texts']['text'] = \Contao\ContentText::class;
 
 # Custom Elements
-$GLOBALS['TL_CTE']['Hero Section']['heroSection'] = 'CnctoolshopBasic\ContentElements\ContentHeroSection';
+$GLOBALS['TL_CTE']['Hero Section']['heroSection'] = 'Cnctoolshop\ContentElements\ContentHeroSection';
 

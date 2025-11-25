@@ -1,48 +1,31 @@
 // BREAKPOINTS
 
 @mixin breakpoint-min($bp) {
-    @media only screen and (min-width: $bp) {
-        @content;
-    }
+  @media only screen and (min-width: $bp) {
+    @content;
+  }
 }
 
 @mixin breakpoint-max($bp) {
-    @media only screen and (max-width: $bp) {
-        @content;
-    }
+  @media only screen and (max-width: $bp) {
+    @content;
+  }
 }
 
 @mixin breakpoint-min-max($bp1, $bp2) {
-    @media only screen and (min-width: $bp1) and (max-width: $bp2) {
-        @content;
-    }
+  @media only screen and (min-width: $bp1) and (max-width: $bp2) {
+    @content;
+  }
 }
 
 // CONTAINERS
 
 @mixin container($size: normal) {
-    width: 82%;
-    max-width: 90rem; // 1440px
-    margin: 0 auto;
+  width: 82%;
+  max-width: 80rem; // 1280px
+  margin: 0 auto;
 
-    @if $size==large {
-        width: 92%;
-        max-width: 102.5rem; // 1640px;
-    }
-
-    @include breakpoint-max($max-laptop-s) {
-        width: 95%;
-    }
-}
-
-@mixin section-background($type: 'none', $color: $light-grey) {
-    @if $type == 'top' {
-        background: linear-gradient(to top, $color 0%, $color 66%, transparent 66%);
-    } @else if $type == 'bottom' {
-        background: linear-gradient(to bottom, $color 0%, $color 66%, transparent 66%);
-    } @else if $type == 'full' {
-        background: $color;
-    } @else {
-        background: none;
-    }
+  @include breakpoint-max($max-laptop) {
+    width: 90%;
+  }
 }

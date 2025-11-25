@@ -1,0 +1,25 @@
+---
+contao:
+  image:
+    sizes:
+      _defaults:
+        formats:
+          jpg: [webp, jpg]
+          png: [webp, png]
+        densities: 1.5x
+        lazy_loading: true
+        resize_mode: crop
+      herosection:
+        width: 580
+        height: 348
+        items:
+          - media: '(min-width: 1280px)'
+            width: 1920
+          - media: '(min-width: 1024px)'
+            width: 1280
+          - media: '(min-width: 768px)'
+            width: 910
+            height: 546
+          - media: '(min-width: 640px)'
+            width: 700
+            height: 420

@@ -18,6 +18,8 @@ class ContentHeroSection extends \Contao\ContentImage
      */
     protected function compile()
     {
+        $this->Template->headline = \Cnctoolshop\Classes\HeadlineEntities::convertEntities($this->headline);
+
         $this->Template->layoutType = $this->layoutType ?: 'background';
         
         if($this->layoutType == 'two-column') {
