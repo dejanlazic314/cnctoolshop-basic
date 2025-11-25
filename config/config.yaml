@@ -23,3 +23,17 @@ contao:
           - media: '(min-width: 640px)'
             width: 700
             height: 420
+      herosectionbg:
+        width: 1960
+        height: 840
+        items:
+          - media: '(min-width: 1280px)'
+            width: 1960
+          - media: '(min-width: 1024px)'
+            width: 1960
+          - media: '(min-width: 768px)'
+            width: 1960
+            height: 840
+          - media: '(min-width: 640px)'
+            width: 1960
+            height: 840

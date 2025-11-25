@@ -23,9 +23,9 @@ class ContentHeroSection extends \Contao\ContentImage
         $this->Template->layoutType = $this->layoutType ?: 'background';
         
         if($this->layoutType == 'two-column') {
-            $imgSize = 'herosectioncolumn';
-        } else {
             $imgSize = 'herosection';
+        } else {
+            $imgSize = 'herosectionbg';
         }
 
         $this->Template->size = $imgSize;
@@ -41,15 +41,6 @@ class ContentHeroSection extends \Contao\ContentImage
 
         $singleSRC = StringUtil::binToUuid(StringUtil::deserialize($this->singleSRC));
         $this->Template->singleSRC = $singleSRC;
-
-        if($this->mediaSRC OR $this->mediaSRCMobile) {
-            if($this->mediaSRC) {
-                $this->Template->video = FilesModel::findByUuid(StringUtil::binToUuid($this->mediaSRC))->path;
-            }
-            if($this->mediaSRCMobile) {
-                $this->Template->videoMobile = FilesModel::findByUuid(StringUtil::binToUuid($this->mediaSRCMobile))->path;
-            }
-        }
 
         parent::compile();
     }

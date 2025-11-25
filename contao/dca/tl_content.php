@@ -3,13 +3,15 @@
 // Palette
 $GLOBALS['TL_DCA']['tl_content']['palettes']['heroSection'] = '{type_legend},type;{layout_legend},layoutType;{headline_legend},overheadline,headline;{text_legend},textOptional;{image_legend},singleSRC;{link_legend},url,linkTitle,secondUrl,secondLinkTitle;{protected_legend:hide},protected;{expert_legend:hide},cssID;{invisible_legend:hide},invisible,start,stop';
 
+// Override
+$GLOBALS['TL_DCA']['tl_content']['fields']['url']['eval']['mandatory'] = false;
 
 // Fields
 // Layout Type
 $GLOBALS['TL_DCA']['tl_content']['fields']['layoutType'] = [
     'label' => ['Layout', 'Choose layout'],
     'inputType' => 'select',
-    'options' => ['background' => 'Image as background', 'two-column' => 'Two columns'],
+    'options' => ['two-column' => 'Two columns', 'background' => 'Image as background'],
     'eval' => ['tl_class' => 'w50'],
     'sql' => "varchar(32) NOT NULL default 'background'"
 ];

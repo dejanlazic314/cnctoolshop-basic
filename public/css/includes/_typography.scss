@@ -100,7 +100,7 @@
   }
 }
 
-@mixin btn($variant: primary) {
+@mixin btn($variant: primary, $theme: default) {
   font-size: 1rem;
   font-weight: $fw-medium;
   line-height: 1;
@@ -113,7 +113,8 @@
   text-decoration: none;
   text-align: center;
   transition: border-color 0.6s cubic-bezier(0.215, 0.61, 0.355, 1),
-    background-color 0.6s cubic-bezier(0.215, 0.61, 0.355, 1);
+    background-color 0.6s cubic-bezier(0.215, 0.61, 0.355, 1),
+    color 0.6s cubic-bezier(0.215, 0.61, 0.355, 1);
   cursor: pointer;
 
   &:hover {
@@ -127,6 +128,31 @@
 
     &:hover {
       color: $white;
+    }
+  }
+
+  @if $theme == alternate {
+    @if $variant == primary {
+      color: $color-neutral-dark;
+      border-color: $white;
+      background-color: $white;
+
+      &:hover {
+        color: $white;
+        border-color: $color-accent;
+        background-color: $color-accent;
+      }
+    }
+
+    @if $variant == secondary {
+      color: $white;
+      border-color: $white;
+
+      &:hover {
+        color: $white;
+        border-color: $color-accent;
+        background-color: $color-accent;
+      }
     }
   }
 }

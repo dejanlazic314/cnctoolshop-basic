@@ -2,7 +2,6 @@
 
 .ce_heroSection {
   position: relative;
-  overflow: hidden;
 
   @include breakpoint-min($min-laptop) {
     display: flex;
@@ -17,12 +16,9 @@
 
   .hero {
     &-content {
-      position: relative;
-      z-index: 1;
       display: flex;
       flex-direction: column;
       max-width: 40rem;
-      padding-block: 1rem;
       border-radius: $edge-radius-big;
       background-color: $white;
 
@@ -67,28 +63,144 @@
     }
 
     &-media {
-      margin-inline: 5%;
-      border-top-left-radius: 100px;
-      border-bottom-right-radius: 100px;
-      box-shadow: -1px -1px 8px 3px rgba(45, 45, 45, 0.15);
-      overflow: hidden;
-
       img {
         width: 100%;
         height: 100%;
         object-fit: cover;
       }
+    }
+  }
 
-      @include breakpoint-min($min-laptop) {
+  &:not(.background) {
+    .hero {
+      &-content {
+        position: relative;
+        z-index: 1;
+        padding-block: 1rem;
+      }
+
+      &-media {
+        margin-inline: 5%;
+        border-top-left-radius: 100px;
+        border-bottom-right-radius: 100px;
+        box-shadow: -1px -1px 8px 3px rgba(45, 45, 45, 0.15);
+        overflow: hidden;
+
+        @include breakpoint-min($min-laptop) {
+          position: absolute;
+          inset: 0;
+          left: auto;
+          width: 100%;
+          max-width: 50%;
+          min-width: 45rem;
+          margin-inline: 0;
+          border-top-left-radius: 200px;
+          border-bottom-right-radius: 0;
+        }
+      }
+    }
+  }
+
+  &.background {
+    height: 70vh;
+    min-height: 35rem;
+
+    @include breakpoint-min($min-mobile-s) {
+      display: flex;
+      align-items: center;
+      height: initial;
+      min-height: 60vh;
+    }
+
+    .inside {
+      position: sticky;
+      left: 0;
+      top: 4rem;
+      right: 0;
+      bottom: auto;
+      padding-block: $padding-xhuge;
+
+      @include breakpoint-min($min-mobile-s) {
+        position: initial;
+      }
+    }
+
+    .hero {
+      &-content {
+        max-width: 33rem;
+        background-color: transparent;
+
+        @include breakpoint-min($min-laptop) {
+          max-width: 40rem;
+        }
+
+        .headline {
+          color: $white;
+
+          .heading-highlight {
+            display: inline-block;
+            padding-inline: 0;
+            background-color: inherit;
+            color: inherit;
+            line-height: inherit;
+          }
+        }
+        .text p {
+          color: $white;
+        }
+
+        .button {
+          @include btn(primary, alternate);
+
+          &.secondary {
+            @include btn(secondary, alternate);
+          }
+        }
+      }
+      &-media-wrapper {
         position: absolute;
         inset: 0;
-        left: auto;
+        background-color: $color-darkest;
+        z-index: -1;
+      }
+      &-media {
+        position: absolute;
+        inset: 0;
+        top: auto;
         width: 100%;
-        max-width: 50%;
-        min-width: 45rem;
-        margin-inline: 0;
-        border-top-left-radius: 200px;
-        border-bottom-right-radius: 0;
+        height: 50%;
+
+        &:after {
+          content: '';
+          position: absolute;
+          left: auto;
+          top: 0;
+          right: 0;
+          bottom: 0;
+          z-index: 1;
+          width: 100%;
+          background-image: linear-gradient(
+            180deg,
+            #020a0f,
+            hsla(0, 0%, 100%, 0) 26%
+          );
+        }
+
+        @include breakpoint-min($min-mobile-s) {
+          top: 0;
+          left: auto;
+          width: 70%;
+          height: initial;
+
+          &:after {
+            background-color: rgba(0, 0, 0, 0.5);
+            background-image: linear-gradient(
+              90deg,
+              #020a0f,
+              hsla(0, 0%, 100%, 0) 30%
+            );
+          }
+        }
       }
     }
   }

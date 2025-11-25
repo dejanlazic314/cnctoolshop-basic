@@ -14,57 +14,59 @@
 
 <?php $this->block('content'); ?>
 
-<?php if ($this->layoutType == 'two-column'): ?>
-    <div class="inside">
-        <div class="hero-content">
-            <?php if ($this->headline): ?>
-                <<?= $this->hl ?> class="headline"><?= $this->headline ?></<?= $this->hl ?>>
-            <?php endif; ?> 
-            <?php if ($this->text): ?>
-                <div class="text">
-                    <?= $this->text ?>
-                </div>
-            <?php endif; ?>
-            <?php if ($this->url || $this->secondUrl): ?>
-                <div class="buttons">
-                    
-                    <?php if ($this->url): ?>
-                        <a href="<?= $this->url ?>"
-                        class="button"
-                        title="<?= $this->linkTitle ?>"
-                        <?= $this->target ? "target='_blank'" : "" ?>>
-                            <?= $this->linkTitle ?>
-                        </a>
-                    <?php endif; ?>
-
-                    <?php if ($this->secondUrl): ?>
-                        <a href="<?= $this->secondUrl ?>"
-                        class="button secondary"
-                        title="<?= $this->secondLinkTitle ?>"
-                        <?= $this->secondTarget ? "target='_blank'" : "" ?>>
-                            <?= $this->secondLinkTitle ?>
-                        </a>
-                    <?php endif; ?>
-                </div>
-            <?php endif; ?>                                  
-        </div>
-    </div>
-    <figure class="hero-media">
-        <?php if ($this->singleSRC): ?>
-            <?php switch ($this->size):
-                case "herosectionslim": ?>
-                    {{picture::<?= $this->singleSRC ?>?size=_herosectionslim}}
-                    <?php break;
-                case "herosectionfull": ?>
-                    {{picture::<?= $this->singleSRC ?>?size=_herosectionfull}}
-                    <?php break;
-                default: ?>
-                    {{picture::<?= $this->singleSRC ?>?size=_herosection}}
-            <?php endswitch; ?>
+<div class="inside">
+    <div class="hero-content">
+        <?php if ($this->headline): ?>
+            <<?= $this->hl ?> class="headline"><?= $this->headline ?></<?= $this->hl ?>>
+        <?php endif; ?> 
+        <?php if ($this->text): ?>
+            <div class="text">
+                <?= $this->text ?>
+            </div>
         <?php endif; ?>
-    </figure>    
-<?php else: ?>
+        <?php if ($this->url || $this->secondUrl): ?>
+            <div class="buttons">
+                
+                <?php if ($this->url): ?>
+                    <a href="<?= $this->url ?>"
+                    class="button"
+                    title="<?= $this->linkTitle ?>"
+                    <?= $this->target ? "target='_blank'" : "" ?>>
+                        <?= $this->linkTitle ?>
+                    </a>
+                <?php endif; ?>
 
+                <?php if ($this->secondUrl): ?>
+                    <a href="<?= $this->secondUrl ?>"
+                    class="button secondary"
+                    title="<?= $this->secondLinkTitle ?>"
+                    <?= $this->secondTarget ? "target='_blank'" : "" ?>>
+                        <?= $this->secondLinkTitle ?>
+                    </a>
+                <?php endif; ?>
+            </div>
+        <?php endif; ?>                                  
+    </div>
+</div>
+
+<?php if ($this->layoutType == 'background'): ?>
+    <div class="hero-media-wrapper">
+<?php endif; ?>
+
+<figure class="hero-media">
+    <?php if ($this->singleSRC): ?>
+        <?php switch ($this->size):
+            case "herosection": ?>
+                {{picture::<?= $this->singleSRC ?>?size=_herosection}}
+                <?php break;
+            default: ?>
+                {{picture::<?= $this->singleSRC ?>?size=_herosectionbg}}
+        <?php endswitch; ?>
+    <?php endif; ?>
+</figure>
+
+<?php if ($this->layoutType == 'background'): ?>
+    </div>
 <?php endif; ?>
 
 <?php $this->endblock(); ?>

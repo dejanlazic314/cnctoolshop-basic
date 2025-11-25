@@ -3,6 +3,7 @@ $white: #ffffff;
 $color-dark: #2d2d2d;
 $color-accent: #23597b;
 $color-neutral-dark: #2f4858;
+$color-darkest: #020a0f;
 
 // Typography
 $font-primary: 'Oswald', sans-serif;
@@ -39,3 +40,5 @@ $min-desktop-xl: 1920px;
 
 //Spacing
 $vertical-padding: clamp(3rem, 5vw, 5rem);
+$padding-xhuge: clamp(4rem, 5vw, 7rem);
+$m-medium: clamp(1.5rem, 5vw, 2rem);
