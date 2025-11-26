@@ -10,7 +10,10 @@
             </trans-unit>  
             <trans-unit id="tl_content.textOptional.0">
                 <source>Text</source>
-            </trans-unit>                            
+            </trans-unit>  
+            <trans-unit id="tl_content.items_legend">
+                <source>Content Items</source>
+            </trans-unit>                                       
         </body>
     </file>
 </xliff>

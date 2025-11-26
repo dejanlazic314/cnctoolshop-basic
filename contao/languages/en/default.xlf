@@ -5,6 +5,9 @@
             <trans-unit id="CTE.heroSection.0">
                 <source>Hero Section</source>
             </trans-unit>
+            <trans-unit id="CTE.services.0">
+                <source>Services</source>
+            </trans-unit>            
         </body>
     </file>
 </xliff>
