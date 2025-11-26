@@ -1,6 +1,8 @@
 <?php
     use Magmell\Contao\Basic\VHUGUtil;
     VHUGUtil::include_css('bundles/cnctoolshop/css/elements/ce_services.scss|static');
+
+    dump($this->servicesCards);
 ?>
 
 <?php $this->extend('block_searchable'); ?>
@@ -8,5 +10,28 @@
 <?php $this->endblock(); ?>
 
 <?php $this->block('content'); ?>
+    <div class="inside">
+        <h2 class="headline"><?= $this->headline ?></h2>
 
+        <ul class="services-list">
+        <?php foreach ($this->servicesCards as $teaser): ?>
+            <li class="services-item">
+
+                {{figure::<?= $teaser['singleSRC'] ?>?size=_herosectionbg}}
+
+                <div class="services-item-content">
+
+                    <h3 class="services-item-title"><?= $teaser['headline'] = str_replace('[-]', "&shy;", $teaser['headline']) ?></h3>
+                    
+                    <div class="services-item-text"><?= $teaser['text'] ?></div>
+                    
+                    <?php if($teaser['url']): ?>
+                        <a href="<?= $teaser['url'] ?>" class="services-item-link"><?= $teaser['linkTitle'] ?></a>
+                    <?php endif; ?>
+                </div>
+
+            </li>
+        <?php endforeach; ?>
+        </ul>
+    </div>
 <?php $this->endblock(); ?>

@@ -67,4 +67,4 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['servicesCards'] = [
         'type' => 'blob',
         'notnull' => false,
     ],
-];;
+];

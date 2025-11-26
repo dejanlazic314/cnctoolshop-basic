@@ -5,7 +5,6 @@
     if ($this->layoutType == 'background') {
         $this->class .= ' ' . "background";
     }
-    dump($this);
 ?>
 
 <?php $this->extend('block_searchable'); ?>
