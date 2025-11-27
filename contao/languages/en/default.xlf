@@ -7,7 +7,10 @@
             </trans-unit>
             <trans-unit id="CTE.services.0">
                 <source>Services</source>
-            </trans-unit>            
+            </trans-unit>  
+            <trans-unit id="CTE.processSteps.0">
+                <source>Process Steps</source>
+            </trans-unit>                         
         </body>
     </file>
 </xliff>
