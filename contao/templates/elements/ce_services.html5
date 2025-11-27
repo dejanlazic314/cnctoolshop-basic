@@ -17,21 +17,35 @@
         <?php foreach ($this->servicesCards as $teaser): ?>
             <li class="services-item">
 
-                {{figure::<?= $teaser['singleSRC'] ?>?size=_herosectionbg}}
+            <?php if($teaser['url']): ?>
+                <a href="<?= $teaser['url'] ?>" class="services-item-link">
+            <?php endif; ?>
+                {{figure::<?= $teaser['singleSRC'] ?>?size=_herosectionbg&options[attr][class]=services-item-media}}
 
                 <div class="services-item-content">
 
-                    <h3 class="services-item-title"><?= $teaser['headline'] = str_replace('[-]', "&shy;", $teaser['headline']) ?></h3>
+                    <h3 class="services-item-title"><?= $teaser['headline']?></h3>
                     
                     <div class="services-item-text"><?= $teaser['text'] ?></div>
                     
-                    <?php if($teaser['url']): ?>
-                        <a href="<?= $teaser['url'] ?>" class="services-item-link"><?= $teaser['linkTitle'] ?></a>
-                    <?php endif; ?>
+                <?php if($teaser['url']): ?>
+                    <div class="services-item-button">
+                        <span><?= $teaser['linkTitle'] ?></span>
+                        <span class="icon-embed">{{file_vendor::dejanlazic314/cnctoolshop-basic/public/icons/arrow-icon.html5}}</span>
+                    </div>
+                <?php endif; ?>
                 </div>
-
+            <?php if($teaser['url']): ?>
+                </a>
+            <?php endif; ?>             
             </li>
         <?php endforeach; ?>
         </ul>
+    </div>
+    <div class="decoration left">
+        {{file_vendor::dejanlazic314/cnctoolshop-basic/public/icons/animated-gears.html5}}
+    </div>
+    <div class="decoration right">
+        {{file_vendor::dejanlazic314/cnctoolshop-basic/public/icons/animated-gears.html5}}
     </div>
 <?php $this->endblock(); ?>

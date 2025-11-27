@@ -23,13 +23,13 @@
       background-color: $white;
 
       .headline {
-        margin-bottom: $m-medium;
+        margin-bottom: $margin-medium;
         font-weight: $fw-bold;
         @include headline-1;
       }
 
       .text {
-        margin-bottom: $m-medium;
+        margin-bottom: $margin-medium;
 
         p {
           @include body-font;

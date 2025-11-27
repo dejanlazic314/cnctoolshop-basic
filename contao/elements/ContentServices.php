@@ -27,6 +27,7 @@ class ContentServices extends \Contao\ContentText
                 if (isset($card['headline'])) {
                     $headlineData = StringUtil::deserialize($card['headline']);
                     $card['headline'] = is_array($headlineData) ? $headlineData['value'] : $card['headline'];
+                    $card['headline'] = \Cnctoolshop\Classes\HeadlineEntities::convertEntities($card['headline']);
                 }
 
                 if (isset($card['singleSRC']) && $card['singleSRC']) {
