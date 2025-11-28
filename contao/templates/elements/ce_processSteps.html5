@@ -1,0 +1,34 @@
+<?php
+    use Magmell\Contao\Basic\VHUGUtil;
+    VHUGUtil::include_css('bundles/cnctoolshop/css/elements/ce_processSteps.scss|static');
+?>
+
+<?php $this->extend('block_searchable'); ?>
+<?php $this->block('headline'); ?>
+<?php $this->endblock(); ?>
+
+<?php $this->block('content'); ?>
+
+<div class="inside">
+    
+    <h2 class="headline"><?= $this->headline ?></h2>
+
+    <div class="steps-list">
+
+    <?php foreach ($this->stepsCards as $index => $card): ?>
+        <div class="step-card">
+            <div class="step-circle">
+                <div class="step-number"><?= $index ?></div>
+            </div>
+            <?php if (!empty($card['iconPath'])): ?>
+            <?php echo file_get_contents($card['iconPath']); ?><?php endif; ?>
+            <h3 class="step-headline"><?= $card['headline'] ?></h3>
+            <div class="step-text"><?= $card['text'] ?></div>
+        </div>
+    <?php endforeach; ?>
+
+    </div>
+
+</div>
+
+<?php $this->endblock(); ?>

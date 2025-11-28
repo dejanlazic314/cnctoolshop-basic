@@ -1,8 +1,6 @@
 <?php
     use Magmell\Contao\Basic\VHUGUtil;
     VHUGUtil::include_css('bundles/cnctoolshop/css/elements/ce_services.scss|static');
-
-    dump($this->servicesCards);
 ?>
 
 <?php $this->extend('block_searchable'); ?>

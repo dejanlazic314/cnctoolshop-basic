@@ -3,6 +3,7 @@
 namespace Cnctoolshop\ContentElements;
 
 use Contao\StringUtil;
+use Contao\FilesModel;
 
 class ContentProcessSteps extends \Contao\ContentText
 {
@@ -24,15 +25,23 @@ class ContentProcessSteps extends \Contao\ContentText
         // Deserializuj headline za svaki card
         if (is_array($stepsCards)) {
             foreach ($stepsCards as &$card) {
+                // Obrada headline-a
                 if (isset($card['headline'])) {
                     $headlineData = StringUtil::deserialize($card['headline']);
                     $card['headline'] = is_array($headlineData) ? $headlineData['value'] : $card['headline'];
                     $card['headline'] = \Cnctoolshop\Classes\HeadlineEntities::convertEntities($card['headline']);
                 }
 
-                if (isset($card['singleSRC']) && $card['singleSRC']) {
-                    $card['singleSRC'] = StringUtil::binToUuid($card['singleSRC']);
-                 }
+                // Obrada ikone
+                if (isset($card['icon']) && $card['icon']) {
+                    $uuid = StringUtil::binToUuid($card['icon']);
+                    $iconModel = FilesModel::findByUuid($uuid);
+                    
+                    if ($iconModel !== null) {
+                        $card['iconPath'] = $iconModel->path;
+                        $card['iconUrl'] = $iconModel->path;
+                    }
+                }
             }
         }
         
