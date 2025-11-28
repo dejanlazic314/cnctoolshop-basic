@@ -36,3 +36,16 @@ contao:
           - media: '(min-width: 640px)'
             width: 672
             height: 448
+      textmedia:
+        width: 560
+        height: 420
+        items:
+          - media: '(min-width: 1024px)'
+            width: 672
+            height: 560
+          - media: '(min-width: 768px)'
+            width: 912
+            height: 684
+          - media: '(min-width: 640px)'
+            width: 680
+            height: 510
