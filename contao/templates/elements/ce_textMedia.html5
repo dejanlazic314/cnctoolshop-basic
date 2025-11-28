@@ -1,0 +1,73 @@
+<?php
+    use Magmell\Contao\Basic\VHUGUtil;
+    VHUGUtil::include_css('bundles/cnctoolshop/css/elements/ce_textMedia.scss|static');
+
+    if ($this->backgroundColor) {
+        $this->class .= ' ' . "bg-" . $this->backgroundColor;
+    }
+
+    if ($this->textPosition == "right") {
+        $this->class .= ' ' . "reverse";
+    }
+
+     dump($this->singleSRC);
+?>
+
+<?php $this->extend('block_searchable'); ?>
+
+<?php $this->block('headline'); ?>
+<?php $this->endblock(); ?>
+
+<?php $this->block('content'); ?>
+
+<div class="inside">
+    
+    <div class="text-side<?= $this->backgroundColor ? ' bg-' . $this->backgroundColor : '' ?>">
+        <div class="text-content-wrapper">
+            <?php if ($this->overheadline): ?>
+                <p class="overheadline"><?= $this->overheadline ?></p>
+            <?php endif; ?>
+            
+            <?php if ($this->headline): ?>
+                <<?= $this->hl ?> class="headline"><?= $this->headline ?></<?= $this->hl ?>>
+            <?php endif; ?>
+            
+            <?php if ($this->textOptional): ?>
+                <div class="text-body">
+                    <?= $this->textOptional ?>
+                </div>
+            <?php endif; ?>
+            
+            <?php if (($this->url && $this->linkTitle) || ($this->secondUrl && $this->secondLinkTitle)): ?>
+                <div class="buttons">
+                    <?php if ($this->url && $this->linkTitle): ?>
+                        <a href="<?= $this->url ?>" class="button" <?= $this->target ? 'target="_blank" rel="noopener"' : '' ?>>
+                            <?= $this->linkTitle ?>
+                        </a>
+                    <?php endif; ?>
+                    
+                    <?php if ($this->secondUrl && $this->secondLinkTitle): ?>
+                        <a href="<?= $this->secondUrl ?>" class="button secondary" <?= $this->target ? 'target="_blank" rel="noopener"' : '' ?>>
+                            <?= $this->secondLinkTitle ?>
+                        </a>
+                    <?php endif; ?>
+                </div>
+            <?php endif; ?>
+        </div>
+    </div>
+    
+    <div class="media-side">
+        <?php if ($this->useFrame): ?>
+            <div class="html-wrapper">
+                <?= $this->frameHtml ?>
+            </div>
+        <?php else: ?>
+            <?php if ($this->singleSRC): ?>
+                 {{figure::<?= $this->singleSRC ?>?size=_textmedia}}
+            <?php endif; ?>
+        <?php endif; ?>
+    </div>
+    
+</div>
+
+<?php $this->endblock(); ?>

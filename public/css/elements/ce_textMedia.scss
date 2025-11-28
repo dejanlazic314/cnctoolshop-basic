@@ -1,0 +1,97 @@
+@import '../includes/includes.scss';
+
+.ce_textMedia {
+  padding-block: $padding-xhuge;
+
+  &.bg-light-blue {
+    background-color: $color-neutral-light;
+
+    .media-side {
+      box-shadow: 0 20px 24px -4px rgba(0, 0, 0, 0.08),
+        0 8px 8px -4px rgba(16, 24, 40, 0.03);
+    }
+  }
+
+  .inside {
+    @include container;
+    display: grid;
+    align-items: center;
+    grid-auto-columns: 1fr;
+    grid-column-gap: 3rem;
+    grid-row-gap: 4rem;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+
+    @include breakpoint-min($min-laptop) {
+      grid-column-gap: 5rem;
+      grid-template-columns: 1fr 1.25fr;
+    }
+  }
+
+  .text-side {
+    max-width: 30rem;
+
+    .headline {
+      @include headline-2;
+      margin-bottom: $margin-small;
+      font-weight: $fw-bold;
+
+      .heading-highlight {
+        background-color: $color-red;
+      }
+    }
+
+    .text-body {
+      p {
+        @include body-font(l);
+        color: rgba($color-dark, 0.75);
+      }
+    }
+
+    .buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      margin-top: $margin-large;
+
+      @include breakpoint-min($min-mobile-s) {
+        flex-wrap: nowrap;
+      }
+    }
+
+    .button {
+      @include btn;
+      width: 100%;
+
+      &.secondary {
+        @include btn(secondary);
+      }
+    }
+  }
+
+  .media-side {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    border-radius: $default-radius;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08), 0 6px 10px rgba(0, 0, 0, 0.06);
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .html-wrapper {
+      width: 100%;
+      min-height: 35rem;
+      height: 100%;
+    }
+
+    iframe {
+      width: 100%;
+      height: 100%;
+    }
+  }
+}

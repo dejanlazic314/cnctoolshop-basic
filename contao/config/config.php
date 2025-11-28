@@ -21,5 +21,7 @@ $GLOBALS['TL_CTE']['texts']['text'] = \Contao\ContentText::class;
 $GLOBALS['TL_CTE']['Custom Elements']['heroSection'] = 'Cnctoolshop\ContentElements\ContentHeroSection';
 $GLOBALS['TL_CTE']['Custom Elements']['services'] = 'Cnctoolshop\ContentElements\ContentServices';
 $GLOBALS['TL_CTE']['Custom Elements']['processSteps'] = 'Cnctoolshop\ContentElements\ContentProcessSteps';
+$GLOBALS['TL_CTE']['Custom Elements']['textMedia'] = 'Cnctoolshop\ContentElements\ContentTextMedia';
+
 
 

@@ -13,7 +13,10 @@
             </trans-unit>  
             <trans-unit id="tl_content.items_legend">
                 <source>Content Items</source>
-            </trans-unit>                                       
+            </trans-unit>  
+            <trans-unit id="tl_content.media_legend">
+                <source>Media</source>
+            </trans-unit>                                                  
         </body>
     </file>
 </xliff>

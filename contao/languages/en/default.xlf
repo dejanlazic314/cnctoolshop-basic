@@ -10,7 +10,10 @@
             </trans-unit>  
             <trans-unit id="CTE.processSteps.0">
                 <source>Process Steps</source>
-            </trans-unit>                         
+            </trans-unit>
+            <trans-unit id="CTE.textMedia.0">
+                <source>Text Media</source>
+            </trans-unit>                                        
         </body>
     </file>
 </xliff>
