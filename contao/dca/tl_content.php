@@ -43,6 +43,15 @@ $GLOBALS['TL_DCA']['tl_content']['palettes']['textMedia'] =
     '{expert_legend:hide},cssID;'.
     '{invisible_legend:hide},invisible,start,stop';
 
+$GLOBALS['TL_DCA']['tl_content']['palettes']['faqSection'] = 
+    '{type_legend},type;'.
+    '{headline_legend},headline;'.
+    '{text_legend},textOptional;'.
+    '{items_legend},accordion;'.
+    '{protected_legend:hide},protected;'.
+    '{expert_legend:hide},cssID;'.
+    '{invisible_legend:hide},invisible,start,stop';    
+
 // Subpalettes - dinamički prikazuje polja
 // Override add image subpallete
 $GLOBALS['TL_DCA']['tl_content']['subpalettes']['addImage'] = 'singleSRC';
@@ -139,6 +148,27 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['secondLinkTitle'] = [
 $GLOBALS['TL_DCA']['tl_content']['fields']['servicesCards'] = [
     'inputType' => 'group',
     'palette' => ['singleSRC', 'headline', 'text', 'url', 'linkTitle'],
+    'fields' => [
+        '&headline' => [
+            'label' => &$GLOBALS['TL_LANG']['MSCGRP']['title'],
+            'eval' => ['tl_class' => "clr"]
+        ],
+        '&text' => [
+            'eval' => ['tl_class' => "clr"]
+        ],
+    ],
+    'min' => 1,
+    'max' => 999,
+    'sql' => [
+        'type' => 'blob',
+        'notnull' => false,
+    ],
+];
+
+// Accordion Cards
+$GLOBALS['TL_DCA']['tl_content']['fields']['accordion'] = [
+    'inputType' => 'group',
+    'palette' => ['headline', 'text'],
     'fields' => [
         '&headline' => [
             'label' => &$GLOBALS['TL_LANG']['MSCGRP']['title'],

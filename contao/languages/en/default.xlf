@@ -13,7 +13,10 @@
             </trans-unit>
             <trans-unit id="CTE.textMedia.0">
                 <source>Text Media</source>
-            </trans-unit>                                        
+            </trans-unit> 
+            <trans-unit id="CTE.faqSection.0">
+                <source>FAQ Section</source>
+            </trans-unit>                                                    
         </body>
     </file>
 </xliff>

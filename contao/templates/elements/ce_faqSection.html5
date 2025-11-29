@@ -1,0 +1,45 @@
+<?php
+    use Magmell\Contao\Basic\VHUGUtil;
+    VHUGUtil::include_css('bundles/cnctoolshop/css/elements/ce_faqSection.scss|static');
+
+    $GLOBALS['TL_JAVASCRIPT'][] = "bundles/cnctoolshop/js/elements/ce_faqSection.js|static";
+?>
+
+<?php $this->extend('block_searchable'); ?>
+<?php $this->block('headline'); ?>
+<?php $this->endblock(); ?>
+
+<?php $this->block('content'); ?>
+
+<div class="inside">
+<?php if ($this->headline): ?>
+    <<?= $this->hl ?> class="headline"><?= $this->headline ?></<?= $this->hl ?>>
+<?php endif; ?>
+
+    <div class="faq-list">
+    <?php foreach ($this->accordion as $item): ?>  
+        <div class="faq-accordion">
+            <button class="faq-question">
+                <span class="faq-headline"><?= $item['headline']?></span>
+                {{file_vendor::dejanlazic314/cnctoolshop-basic/public/icons/plus-icon.html5}}
+            </button>
+            <div class="faq-answer-wrapper">
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <?= $item['text'] ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <?php endforeach; ?> 
+    </div>
+
+    <?php if ($this->textOptional): ?>
+        <div class="text-body">
+            <?= $this->textOptional ?>
+        </div>
+    <?php endif; ?>
+            
+</div>
+
+<?php $this->endblock(); ?>
