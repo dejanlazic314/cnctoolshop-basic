@@ -9,8 +9,6 @@
     if ($this->textPosition == "right") {
         $this->class .= ' ' . "reverse";
     }
-
-     dump($this->singleSRC);
 ?>
 
 <?php $this->extend('block_searchable'); ?>
@@ -22,7 +20,7 @@
 
 <div class="inside">
     
-    <div class="text-side<?= $this->backgroundColor ? ' bg-' . $this->backgroundColor : '' ?>">
+    <div class="text-side">
         <div class="text-content-wrapper">
             <?php if ($this->overheadline): ?>
                 <p class="overheadline"><?= $this->overheadline ?></p>
