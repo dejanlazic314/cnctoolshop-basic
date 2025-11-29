@@ -50,7 +50,17 @@ $GLOBALS['TL_DCA']['tl_content']['palettes']['faqSection'] =
     '{items_legend},accordion;'.
     '{protected_legend:hide},protected;'.
     '{expert_legend:hide},cssID;'.
-    '{invisible_legend:hide},invisible,start,stop';    
+    '{invisible_legend:hide},invisible,start,stop';
+
+$GLOBALS['TL_DCA']['tl_content']['palettes']['textImage'] = 
+    '{type_legend},type;'.
+    '{layout_legend},textPosition,backgroundColor;'.
+    '{headline_legend},overheadline,headline;'.
+    '{text_legend},textOptional;'.
+    '{image_legend},singleSRC;'.
+    '{protected_legend:hide},protected;'.
+    '{expert_legend:hide},cssID;'.
+    '{invisible_legend:hide},invisible,start,stop';  
 
 // Subpalettes - dinamički prikazuje polja
 // Override add image subpallete
