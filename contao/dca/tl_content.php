@@ -16,10 +16,10 @@ $GLOBALS['TL_DCA']['tl_content']['palettes']['heroSection'] =
     '{expert_legend:hide},cssID;'.
     '{invisible_legend:hide},invisible,start,stop';
 
-$GLOBALS['TL_DCA']['tl_content']['palettes']['services'] = 
+$GLOBALS['TL_DCA']['tl_content']['palettes']['gridSection'] = 
     '{type_legend},type,headline,subheadline;'.
     '{text_legend},textOptional;'.
-    '{items_legend},servicesCards;'.
+    '{items_legend},gridItems;'.
     '{protected_legend:hide},protected;'.
     '{expert_legend:hide},cssID;'.
     '{invisible_legend:hide},invisible,start,stop';
@@ -155,7 +155,7 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['secondLinkTitle'] = [
 ];
 
 // Services Cards
-$GLOBALS['TL_DCA']['tl_content']['fields']['servicesCards'] = [
+$GLOBALS['TL_DCA']['tl_content']['fields']['gridItems'] = [
     'inputType' => 'group',
     'palette' => ['singleSRC', 'headline', 'text', 'url', 'linkTitle'],
     'fields' => [

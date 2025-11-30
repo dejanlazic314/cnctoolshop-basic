@@ -1,6 +1,6 @@
 <?php
     use Magmell\Contao\Basic\VHUGUtil;
-    VHUGUtil::include_css('bundles/cnctoolshop/css/elements/ce_services.scss|static');
+    VHUGUtil::include_css('bundles/cnctoolshop/css/elements/ce_gridSection.scss|static');
 ?>
 
 <?php $this->extend('block_searchable'); ?>
@@ -11,29 +11,29 @@
     <div class="inside">
         <h2 class="headline"><?= $this->headline ?></h2>
 
-        <ul class="services-list">
-        <?php foreach ($this->servicesCards as $teaser): ?>
-            <li class="services-item">
+        <ul class="grid-list">
+        <?php foreach ($this->gridItems as $item): ?>
+            <li class="grid-item">
 
-            <?php if($teaser['url']): ?>
-                <a href="<?= $teaser['url'] ?>" class="services-item-link">
+            <?php if($item['url']): ?>
+                <a href="<?= $item['url'] ?>" class="grid-item-link">
             <?php endif; ?>
-                {{figure::<?= $teaser['singleSRC'] ?>?size=_herosectionbg&options[attr][class]=services-item-media}}
+                {{figure::<?= $item['singleSRC'] ?>?size=_herosectionbg&options[attr][class]=grid-item-media}}
 
-                <div class="services-item-content">
+                <div class="grid-item-content">
 
-                    <h3 class="services-item-title"><?= $teaser['headline']?></h3>
+                    <h3 class="grid-item-title"><?= $item['headline']?></h3>
                     
-                    <div class="services-item-text"><?= $teaser['text'] ?></div>
+                    <div class="grid-item-text"><?= $item['text'] ?></div>
                     
-                <?php if($teaser['url']): ?>
-                    <div class="services-item-button">
-                        <span><?= $teaser['linkTitle'] ?></span>
+                <?php if($item['url']): ?>
+                    <div class="grid-item-button">
+                        <span><?= $item['linkTitle'] ?></span>
                         <span class="icon-embed">{{file_vendor::dejanlazic314/cnctoolshop-basic/public/icons/arrow-icon.html5}}</span>
                     </div>
                 <?php endif; ?>
                 </div>
-            <?php if($teaser['url']): ?>
+            <?php if($item['url']): ?>
                 </a>
             <?php endif; ?>             
             </li>
