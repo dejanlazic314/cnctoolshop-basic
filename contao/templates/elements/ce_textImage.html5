@@ -9,8 +9,6 @@
     if ($this->textPosition == "right") {
         $this->class .= ' ' . "reverse";
     }
-
-     dump($this->singleSRC);
 ?>
 
 <?php $this->extend('block_searchable'); ?>
@@ -19,5 +17,34 @@
 <?php $this->endblock(); ?>
 
 <?php $this->block('content'); ?>
+
+<div class="inside">
+
+    <div class="text-side">
+        <div class="text-content-wrapper">
+            <?php if ($this->overheadline): ?>
+                <p class="overheadline"><?= $this->overheadline ?></p>
+            <?php endif; ?>
+            
+            <?php if ($this->headline): ?>
+                <<?= $this->hl ?> class="headline"><?= $this->headline ?></<?= $this->hl ?>>
+            <?php endif; ?>
+            
+            <?php if ($this->textOptional): ?>
+                <div class="text-body">
+                    <?= $this->textOptional ?>
+                </div>
+            <?php endif; ?>
+        </div>
+    </div>
+    
+    <div class="media-side">
+
+        <?php if ($this->singleSRC): ?>
+                {{figure::<?= $this->singleSRC ?>?size=_textimage}}
+        <?php endif; ?>
+
+    </div>    
+</div>
 
 <?php $this->endblock(); ?>
