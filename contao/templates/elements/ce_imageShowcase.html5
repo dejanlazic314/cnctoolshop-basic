@@ -1,0 +1,46 @@
+<?php
+    use Magmell\Contao\Basic\VHUGUtil;
+    VHUGUtil::include_css('bundles/cnctoolshop/css/plugins/splide/splide-core.scss|static');
+    VHUGUtil::include_css('bundles/cnctoolshop/css/elements/ce_imageShowcase.scss|static');
+
+    $GLOBALS['TL_JAVASCRIPT'][] = "bundles/cnctoolshop/js/plugins/splide/splide.min.js|static";
+    $GLOBALS['TL_JAVASCRIPT'][] = "bundles/cnctoolshop/js/elements/ce_imageShowcase.js|static";
+?>
+
+<?php $this->extend('block_searchable'); ?>
+<?php $this->block('headline'); ?>
+<?php $this->endblock(); ?>
+
+<?php $this->block('content'); ?>
+
+<div class="inside">
+  <h2 class="headline"><?= $this->headline ?></h2>
+
+  <!-- Thumbnail Grid -->
+    <div class="gallery-grid">
+    <?php foreach ($this->multiSRC as $index => $image): ?>
+        <div class="gallery-item" data-index="<?= $index ?>">
+            {{figure::<?= $image ?>?size=_textimage}}
+        </div>
+    <?php endforeach; ?>
+    </div>
+
+  <!-- Lightbox Modal -->
+  <div class="lightbox-modal">
+    <button class="lightbox-close" aria-label="Close">&times;</button>
+    
+        <!-- Splide Container -->
+        <div class="splide" id="splide-<?= $this->id ?>">
+            <div class="splide__track">
+                <ul class="splide__list">
+                <?php foreach ($this->multiSRC as $image): ?>
+                    <li class="splide__slide">
+                        {{figure::<?= $image ?>?size=_textimage}}
+                    </li>
+                <?php endforeach; ?>
+                </ul>
+            </div>
+        </div>
+    </div>
+<?php $this->endblock(); ?>
+

@@ -1,5 +1,8 @@
 <?php
 
+use Contao\DataContainer;
+
+
 // Palette selector - ovo mora biti na početku
 array_push($GLOBALS['TL_DCA']['tl_content']['palettes']['__selector__'], 'addImage', 'useFrame');
 
@@ -60,6 +63,15 @@ $GLOBALS['TL_DCA']['tl_content']['palettes']['textImage'] =
     '{image_legend},singleSRC;'.
     '{protected_legend:hide},protected;'.
     '{expert_legend:hide},cssID;'.
+    '{invisible_legend:hide},invisible,start,stop';
+
+$GLOBALS['TL_DCA']['tl_content']['palettes']['imageShowcase'] = 
+    '{type_legend},type;'.
+    '{headline_legend},headline;'.
+    '{text_legend},textOptional;'.
+    '{gallery_legend},multiSRC;'.
+    '{protected_legend:hide},protected;'.
+    '{expert_legend:hide},cssID;'.
     '{invisible_legend:hide},invisible,start,stop';  
 
 // Subpalettes - dinamički prikazuje polja
@@ -70,6 +82,9 @@ $GLOBALS['TL_DCA']['tl_content']['subpalettes']['useFrame'] = 'frameHtml';
 
 // Override Fields
 $GLOBALS['TL_DCA']['tl_content']['fields']['url']['eval']['mandatory'] = false;
+
+# Callbacks
+$GLOBALS['TL_DCA']['tl_content']['fields']['multiSRC']['load_callback'][] = array('tl_content_ab', 'setMultiSrcFlags');
 
 // Fields
 // Layout Type
@@ -221,3 +236,27 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['stepsCards'] = [
         'notnull' => false,
     ],
 ];
+
+class tl_content_ab extends tl_content
+{
+
+    /**
+     * Add sorting functionality to multiSRC field for exact type
+     * @param mixed $varValue
+     * @param Contao\DataContainer $dc
+     * @return mixed
+     */
+    public function setMultiSrcFlags($varValue, DataContainer $dc)
+    {
+        if ($dc->activeRecord) {
+            switch ($dc->activeRecord->type) {
+                case 'imageShowcase':
+                    $GLOBALS['TL_DCA'][$dc->table]['fields'][$dc->field]['eval']['isGallery'] = true;
+                    $GLOBALS['TL_DCA'][$dc->table]['fields'][$dc->field]['eval']['extensions'] = '%contao.image.valid_extensions%';
+                    break;
+            }
+
+            return $varValue;
+        }
+    }
+}
