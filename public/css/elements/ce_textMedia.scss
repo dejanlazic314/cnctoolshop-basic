@@ -12,6 +12,14 @@
     }
   }
 
+  &.reverse {
+    @include breakpoint-min($min-laptop) {
+      .text-side {
+        order: 2;
+      }
+    }
+  }
+
   .inside {
     @include container;
     display: grid;
