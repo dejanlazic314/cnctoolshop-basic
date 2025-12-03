@@ -1,0 +1,32 @@
+<?php
+    use Magmell\Contao\Basic\VHUGUtil;
+    VHUGUtil::include_css('bundles/cnctoolshop/css/plugins/splide/splide-core.scss|static');
+    VHUGUtil::include_css('bundles/cnctoolshop/css/elements/ce_logoClients.scss|static');
+
+    $GLOBALS['TL_JAVASCRIPT'][] = "bundles/cnctoolshop/js/plugins/splide/splide.min.js|static";
+    $GLOBALS['TL_JAVASCRIPT'][] = "bundles/cnctoolshop/js/plugins/splide/splide-extension-auto-scroll.min.js|static";
+    $GLOBALS['TL_JAVASCRIPT'][] = "bundles/cnctoolshop/js/elements/ce_logoClients.js|static";
+?>
+
+<?php $this->extend('block_searchable'); ?>
+<?php $this->block('headline'); ?>
+<?php $this->endblock(); ?>
+
+<?php $this->block('content'); ?>
+
+    <?php if(!empty($this->images)): ?>
+    <div class="logos">
+        <div class="splide">
+            <div class="splide__track">
+                <ul class="splide__list">
+                <?php foreach($this->images as $image): ?>
+                    <li class="logo-item splide__slide">{{figure::<?= $image ?>}}</li>
+                <?php endforeach; ?>                
+                </ul>
+            </div>           
+        </div>
+    </div>
+
+    <?php endif; ?>
+
+<?php $this->endblock(); ?>

@@ -1,0 +1,19 @@
+@import '../includes/includes.scss';
+
+.ce_logoClients {
+  padding-block: 1rem;
+  background-color: $color-neutral-dark;
+
+  .logo-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    img {
+      width: auto;
+      max-width: 150px;
+      height: auto;
+      max-height: 45px;
+    }
+  }
+}

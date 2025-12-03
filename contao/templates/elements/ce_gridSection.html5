@@ -18,7 +18,7 @@
             <?php if($item['url']): ?>
                 <a href="<?= $item['url'] ?>" class="grid-item-link">
             <?php endif; ?>
-                {{figure::<?= $item['singleSRC'] ?>?size=_herosectionbg&options[attr][class]=grid-item-media}}
+                {{figure::<?= $item['singleSRC'] ?>?size=_gridsection&options[attr][class]=grid-item-media}}
 
                 <div class="grid-item-content">
 

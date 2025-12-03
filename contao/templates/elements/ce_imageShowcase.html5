@@ -35,7 +35,7 @@
                 <ul class="splide__list">
                 <?php foreach ($this->multiSRC as $image): ?>
                     <li class="splide__slide">
-                        {{figure::<?= $image ?>?size=_textimage}}
+                        {{figure::<?= $image ?>?size=_imageshowcase}}
                     </li>
                 <?php endforeach; ?>
                 </ul>

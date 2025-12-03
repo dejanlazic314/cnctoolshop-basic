@@ -21,6 +21,7 @@
 .ce_gridSection {
   position: relative;
   padding-block: $padding-xhuge;
+  overflow: hidden;
 
   a {
     text-decoration: none;
@@ -118,6 +119,10 @@
       background-color: $white;
       text-align: center;
       box-shadow: $shadow-large;
+    }
+
+    &-item:not(:has(.grid-item-link)) {
+      overflow: hidden;
     }
 
     &-item-link {

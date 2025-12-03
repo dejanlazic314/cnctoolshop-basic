@@ -25,6 +25,7 @@ $GLOBALS['TL_CTE']['Custom Elements']['textMedia'] = 'Cnctoolshop\ContentElement
 $GLOBALS['TL_CTE']['Custom Elements']['faqSection'] = 'Cnctoolshop\ContentElements\ContentFaqSection';
 $GLOBALS['TL_CTE']['Custom Elements']['textImage'] = 'Cnctoolshop\ContentElements\ContentTextImage';
 $GLOBALS['TL_CTE']['Custom Elements']['imageShowcase'] = 'Cnctoolshop\ContentElements\ContentImageShowcase';
+$GLOBALS['TL_CTE']['Custom Elements']['logoClients'] = 'Cnctoolshop\ContentElements\ContentLogoClients';
 
 
 

@@ -128,15 +128,15 @@
     width: 100%;
     max-width: 90vw;
     max-height: 90vh;
-    padding: 0 5rem;
+    //padding: 0 5rem;
 
-    @include breakpoint-max($max-tablet) {
-      padding: 0 3rem;
-    }
+    // @include breakpoint-max($max-tablet) {
+    //   padding: 0 3rem;
+    // }
 
-    @include breakpoint-max($max-mobile) {
-      padding: 0 2rem;
-    }
+    // @include breakpoint-max($max-mobile) {
+    //   padding: 0 2rem;
+    // }
 
     &:not(.is-initialized) {
       opacity: 0;
@@ -222,23 +222,23 @@
       }
 
       &--prev {
-        left: 1rem;
+        left: -2.5vw;
 
         svg {
           scale: -1;
         }
 
-        @include breakpoint-max($max-tablet) {
-          left: 0.5rem;
-        }
+        // @include breakpoint-max($max-tablet) {
+        //   left: 0.5rem;
+        // }
       }
 
       &--next {
-        right: 1rem;
+        right: -2.5vw;
 
-        @include breakpoint-max($max-tablet) {
-          right: 0.5rem;
-        }
+        // @include breakpoint-max($max-tablet) {
+        //   right: 0.5rem;
+        // }
       }
 
       @include breakpoint-max($max-tablet) {

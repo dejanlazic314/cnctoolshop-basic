@@ -1,0 +1,79 @@
+<?php
+/**
+ * CNC Toolshop - Unified Navigation Template
+ * 
+ * Jedan template za desktop i mobile
+ * CSS kontroliše prikaz
+ * 
+ * Contao polja:
+ * - iconselect: klasa za ikonu
+ * - descriptiontitle: kratak opis
+ */
+?>
+
+<?php if ($this->level === 'level_1'): ?>
+
+<ul class="header-nav-list">
+    <?php foreach ($this->items as $item): ?>
+        <?php 
+            $hasDropdown = !empty($item['subitems']);
+            $isActive = $item['isActive'] || $item['isTrail'];
+        ?>
+        <li class="header-nav-item<?= $hasDropdown ? ' has-dropdown' : '' ?><?= $isActive ? ' is-current' : '' ?>">
+            
+            <a href="<?= $item['href'] ?>" 
+               class="header-nav-link"
+               title="<?= $item['pageTitle'] ?: $item['title'] ?>"
+               <?= $item['target'] ?><?= $item['rel'] ?? '' ?>>
+                <?= $item['link'] ?>
+                <?php if ($hasDropdown): ?>
+                    <svg class="header-nav-arrow" width="10" height="6" viewBox="0 0 10 6" fill="none" aria-hidden="true">
+                        <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                <?php endif; ?>
+            </a>
+            
+            <?= $item['subitems'] ?? '' ?>
+        </li>
+    <?php endforeach; ?>
+</ul>
+
+<?php elseif ($this->level === 'level_2'): ?>
+<!-- Dropdown - mega menu na desktop, accordion lista na mobile -->
+<div class="header-nav-dropdown">
+    <ul class="header-nav-dropdown-list">
+        <?php foreach ($this->items as $item): ?>
+            <li>
+                <a href="<?= $item['href'] ?>" 
+                   class="header-nav-dropdown-item<?= $item['isActive'] ? ' is-active' : '' ?>"
+                   title="<?= $item['pageTitle'] ?: $item['title'] ?>">
+                    
+                    <?php if ($item['iconselect']): ?>
+                    <span class="header-nav-dropdown-icon">
+                        <i class="<?= $item['iconselect'] ?>" aria-hidden="true"></i>
+                    </span>
+                    <?php endif; ?>
+                    
+                    <span class="header-nav-dropdown-content">
+                        <span class="header-nav-dropdown-title"><?= $item['link'] ?></span>
+                        <?php if ($item['descriptiontitle']): ?>
+                            <span class="header-nav-dropdown-desc"><?= $item['descriptiontitle'] ?></span>
+                        <?php endif; ?>
+                    </span>
+                </a>
+            </li>
+        <?php endforeach; ?>
+    </ul>
+</div>
+
+<?php else: ?>
+<!-- Deeper levels -->
+<ul class="header-nav-sublist <?= $this->level ?>">
+    <?php foreach ($this->items as $item): ?>
+        <li>
+            <a href="<?= $item['href'] ?>"><?= $item['link'] ?></a>
+            <?= $item['subitems'] ?? '' ?>
+        </li>
+    <?php endforeach; ?>
+</ul>
+<?php endif; ?>

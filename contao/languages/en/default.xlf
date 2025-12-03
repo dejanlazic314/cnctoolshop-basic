@@ -22,7 +22,10 @@
             </trans-unit>
             <trans-unit id="CTE.imageShowcase.0">
                 <source>Image Showcase</source>
-            </trans-unit>                                                                               
+            </trans-unit>    
+            <trans-unit id="CTE.logoClients.0">
+                <source>Logo Clients</source>
+            </trans-unit>                                                                                         
         </body>
     </file>
 </xliff>

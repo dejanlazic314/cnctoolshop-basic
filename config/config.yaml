@@ -10,6 +10,7 @@ contao:
         lazy_loading: true
         resize_mode: crop
       herosection:
+        lazy_loading: false
         width: 580
         height: 348
         items:
@@ -24,18 +25,22 @@ contao:
             width: 700
             height: 420
       herosectionbg:
-        width: 564
-        height: 376
+        lazy_loading: false
+        width: 480
+        height: 480
         items:
           - media: '(min-width: 1024px)'
-            width: 400
-            height: 320
+            width: 1800
+            height: 866
           - media: '(min-width: 768px)'
-            width: 438
-            height: 292
+            width: 720
+            height: 576
           - media: '(min-width: 640px)'
-            width: 672
-            height: 448
+            width: 630
+            height: 480
+          - media: '(min-width: 480px)'
+            width: 450
+            height: 384
       textmedia:
         width: 560
         height: 420
@@ -62,3 +67,28 @@ contao:
           - media: '(min-width: 640px)'
             width: 680
             height: 680
+      imageshowcase:
+        resize_mode: proportional
+        width: 450
+        items:
+          - media: '(min-width: 1024px)'
+            width: 1280
+          - media: '(min-width: 768px)'
+            width: 912
+          - media: '(min-width: 640px)'
+            width: 680
+          - media: '(min-width: 480px)'
+            width: 560
+      gridsection:
+        width: 420
+        height: 280
+        items:
+          - media: '(min-width: 768px)'
+            width: 444
+            height: 296
+          - media: '(min-width: 640px)'
+            width: 680
+            height: 560
+          - media: '(min-width: 480px)'
+            width: 564
+            height: 376

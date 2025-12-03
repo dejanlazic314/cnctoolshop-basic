@@ -1,0 +1,43 @@
+<?php
+    use Magmell\Contao\Basic\VHUGUtil;
+    VHUGUtil::include_css('bundles/cnctoolshop/css/frontend/header.scss|static');
+    $GLOBALS['TL_JAVASCRIPT'][] = "bundles/cnctoolshop/js/frontend/header.js|static";
+?>
+
+<header class="header" id="header">
+    <div class="header-inner">
+        <a href="/" class="header-logo" title="CNC Toolshop">
+            {{file_vendor::dejanlazic314/cnctoolshop-basic/public/icons/cnctoolshop-logo.html5}}
+        </a>
+
+        <nav class="header-nav" id="main-nav" aria-label="{{iflng::sr}}Glavna navigacija{{iflng}}{{iflng::en}}Main navigation{{iflng}}">
+            {{insert_module::1}}
+        </nav>
+
+        <div class="header-actions">
+            <div class="header-lang-switcher">
+                <a href="/" class="header-lang-switcher-btn is-active" hreflang="sr">SR</a>
+                <a href="/en" class="header-lang-switcher-btn" hreflang="en">EN</a>
+            </div>
+            <a href="{{link_url::kontakt}}" class="header-cta">Zatražite ponudu</a>
+        </div>
+
+        <button class="header-toggle" id="mobile-toggle" 
+            aria-label="{{iflng::sr}}Otvori meni{{iflng}}{{iflng::en}}Open menu{{iflng}}" 
+            aria-expanded="false"
+            data-label-open="{{iflng::sr}}Otvori meni{{iflng}}{{iflng::en}}Open menu{{iflng}}"
+            data-label-close="{{iflng::sr}}Zatvori meni{{iflng}}{{iflng::en}}Close menu{{iflng}}">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </div>
+
+    <div class="header-mobile-extras">
+        <a href="{{link_url::kontakt}}" class="header-mobile-cta">Zatražite ponudu</a>
+        <div class="header-mobile-lang">
+            <a href="/" class="is-active" hreflang="sr">Srpski</a>
+            <a href="/en" hreflang="en">English</a>
+        </div>
+    </div>
+</header>
