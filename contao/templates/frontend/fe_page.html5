@@ -37,14 +37,12 @@
 
     <div id="wrapper">
 
-      <?php $this->block('header'); ?>
-          <header id="header">
-            <div class="inside">
-             
-            </div>
-          </header>
-      <?php $this->endblock(); ?>
-
+      <header id="header">
+        <div class="inside">
+          {{file_vendor::dejanlazic314/cnctoolshop-basic/contao/templates/frontend/header.html5}}
+        </div>
+      </header>
+      
       <?php $this->sections('before'); ?>
 
       <?php $this->block('container'); ?>
