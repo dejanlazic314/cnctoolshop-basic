@@ -1,16 +1,3 @@
-<?php
-/**
- * CNC Toolshop - Unified Navigation Template
- * 
- * Jedan template za desktop i mobile
- * CSS kontroliše prikaz
- * 
- * Contao polja:
- * - iconselect: klasa za ikonu
- * - descriptiontitle: kratak opis
- */
-?>
-
 <?php if ($this->level === 'level_1'): ?>
 
 <ul class="header-nav-list">
@@ -39,7 +26,7 @@
 </ul>
 
 <?php elseif ($this->level === 'level_2'): ?>
-<!-- Dropdown - mega menu na desktop, accordion lista na mobile -->
+
 <div class="header-nav-dropdown">
     <ul class="header-nav-dropdown-list">
         <?php foreach ($this->items as $item): ?>
@@ -48,11 +35,14 @@
                    class="header-nav-dropdown-item<?= $item['isActive'] ? ' is-active' : '' ?>"
                    title="<?= $item['pageTitle'] ?: $item['title'] ?>">
                     
-                    <?php if ($item['iconselect']): ?>
-                    <span class="header-nav-dropdown-icon">
-                        <i class="<?= $item['iconselect'] ?>" aria-hidden="true"></i>
-                    </span>
-                    <?php endif; ?>
+                <?php if (!empty($item['singleSRC'])): ?>
+                    <div class="icon">
+                        <?php $file = \Contao\FilesModel::findByUuid($item['singleSRC']); ?>
+                        <?php if (null !== $file && is_file($file->path)): ?>
+                            <?php echo file_get_contents($file->path); ?>
+                        <?php endif; ?>
+                    </div>
+                <?php endif; ?>
                     
                     <span class="header-nav-dropdown-content">
                         <span class="header-nav-dropdown-title"><?= $item['link'] ?></span>
@@ -67,7 +57,7 @@
 </div>
 
 <?php else: ?>
-<!-- Deeper levels -->
+
 <ul class="header-nav-sublist <?= $this->level ?>">
     <?php foreach ($this->items as $item): ?>
         <li>
