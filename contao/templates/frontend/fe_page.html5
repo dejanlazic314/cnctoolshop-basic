@@ -83,7 +83,7 @@
       <?php $this->sections('after'); ?>
 
       <?php $this->block('footer'); ?>
-        
+        {{file_vendor::dejanlazic314/cnctoolshop-basic/contao/templates/frontend/footer.html5}}
       <?php $this->endblock(); ?>
 
     </div>
