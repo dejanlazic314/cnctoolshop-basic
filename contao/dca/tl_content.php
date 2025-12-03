@@ -81,6 +81,14 @@ $GLOBALS['TL_DCA']['tl_content']['palettes']['logoClients'] =
     '{expert_legend:hide},cssID;'.
     '{invisible_legend:hide},invisible,start,stop';  
 
+$GLOBALS['TL_DCA']['tl_content']['palettes']['contactForm'] = 
+'{type_legend},type,headline,subheadline;'.
+'{text_legend},textOptional;'.
+'{items_legend},formpicker;'.
+'{protected_legend:hide},protected;'.
+'{expert_legend:hide},cssID;'.
+'{invisible_legend:hide},invisible,start,stop';
+
 // Subpalettes - dinamički prikazuje polja
 // Override add image subpallete
 $GLOBALS['TL_DCA']['tl_content']['subpalettes']['addImage'] = 'singleSRC';
@@ -94,6 +102,21 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['url']['eval']['mandatory'] = false;
 $GLOBALS['TL_DCA']['tl_content']['fields']['multiSRC']['load_callback'][] = array('tl_content_ab', 'setMultiSrcFlags');
 
 // Fields
+// Form Picker
+$GLOBALS['TL_DCA']['tl_content']['fields']['formpicker'] = array
+(
+    'inputType' => 'picker',
+    'sql' => [
+        'type' => 'integer',
+        'unsigned' => true,
+        'default' => 0,
+    ],
+    'relation' => [
+        'type' => 'hasOne',
+        'load' => 'lazy',
+        'table' => 'tl_form',
+    ],
+);
 // Layout Type
 $GLOBALS['TL_DCA']['tl_content']['fields']['layoutType'] = [
     'label' => ['Layout', 'Choose layout'],

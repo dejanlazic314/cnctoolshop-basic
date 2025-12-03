@@ -1,0 +1,204 @@
+@import '../includes/includes';
+
+.ce_contactForm {
+  padding: $vertical-padding 0;
+  background-color: $color-neutral-light;
+
+  > .inside {
+    @include container;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: $margin-large;
+
+    @include breakpoint-min($min-tablet) {
+      grid-template-columns: 1fr 1fr;
+      gap: $margin-xlarge;
+      align-items: start;
+    }
+
+    @include breakpoint-min($min-laptop) {
+      grid-template-columns: 5fr 7fr;
+      gap: $margin-xxlarge;
+    }
+  }
+
+  .left-column {
+    .section-title {
+      font-family: $font-secondary;
+      font-size: 0.875rem;
+      font-weight: $fw-medium;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: $color-accent;
+      margin-bottom: $margin-xsmall;
+    }
+
+    .headline {
+      @include headline-2;
+      margin-bottom: $margin-small;
+    }
+
+    .description {
+      @include body-font(l);
+      color: rgba($color-dark, $text-alpha);
+
+      p {
+        margin-bottom: $margin-xsmall;
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+
+      a {
+        color: $color-accent;
+        text-decoration: underline;
+        text-underline-offset: 3px;
+
+        &:hover {
+          color: $color-neutral-dark;
+        }
+      }
+    }
+
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-top: 2rem;
+      list-style: none;
+
+      li {
+        display: flex;
+        align-items: flex-start;
+        gap: 0.75rem;
+      }
+
+      svg {
+        width: 20px;
+        height: 20px;
+        color: $color-accent;
+        flex-shrink: 0;
+        margin-top: 0.15rem;
+      }
+
+      a {
+        color: $color-dark;
+        text-decoration: none;
+      }
+    }
+  }
+
+  .right-column {
+    .ce_form {
+      background-color: $white;
+      padding: $padding-large;
+      border-radius: $edge-radius-big;
+      box-shadow: $shadow-large;
+
+      @include breakpoint-min($min-laptop) {
+        padding: $padding-xlarge;
+      }
+    }
+
+    form {
+      .formbody {
+        display: flex;
+        flex-direction: column;
+        gap: $margin-small;
+      }
+    }
+
+    .widget {
+      display: flex;
+      flex-direction: column;
+      gap: $margin-xxsmall;
+
+      label {
+        font-family: $font-secondary;
+        font-size: 0.875rem;
+        font-weight: $fw-medium;
+        color: $color-dark;
+
+        .mandatory {
+          color: $color-red;
+          margin-left: 0.125rem;
+        }
+      }
+
+      input.text,
+      input[type='text'],
+      input[type='email'],
+      input[type='tel'],
+      textarea.textarea {
+        font-family: $font-secondary;
+        font-size: 1rem;
+        line-height: 1.5;
+        color: $color-dark;
+        padding: 0.875rem 1rem;
+        border: 1px solid rgba($color-dark, 0.15);
+        border-radius: $default-radius;
+        background-color: $white;
+        transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        width: 100%;
+
+        &::placeholder {
+          color: rgba($color-dark, 0.4);
+        }
+
+        &:hover {
+          border-color: rgba($color-dark, 0.3);
+        }
+
+        &:focus {
+          outline: none;
+          border-color: $color-accent;
+          box-shadow: 0 0 0 3px rgba($color-accent, 0.1);
+        }
+      }
+
+      textarea.textarea {
+        min-height: 140px;
+        resize: vertical;
+      }
+
+      &.widget-submit {
+        margin-top: $margin-xsmall;
+      }
+    }
+
+    .submit {
+      @include btn(primary);
+      width: 100%;
+      padding: 1.125rem 2rem;
+      font-size: 1rem;
+
+      @include breakpoint-min($min-tablet) {
+        width: auto;
+      }
+
+      &:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+      }
+    }
+
+    p.error {
+      font-family: $font-secondary;
+      font-size: 0.8125rem;
+      color: $color-red;
+      margin-top: $margin-xxsmall;
+    }
+
+    .widget.error {
+      input,
+      textarea {
+        border-color: $color-red;
+
+        &:focus {
+          box-shadow: 0 0 0 3px rgba($color-red, 0.1);
+        }
+      }
+    }
+  }
+}
