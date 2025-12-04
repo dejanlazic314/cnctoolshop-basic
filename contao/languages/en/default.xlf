@@ -25,7 +25,10 @@
             </trans-unit>    
             <trans-unit id="CTE.logoClients.0">
                 <source>Logo Clients</source>
-            </trans-unit>                                                                                         
+            </trans-unit>
+            <trans-unit id="CTE.contactForm.0">
+                <source>Contact Form</source>
+            </trans-unit>                                                                                                      
         </body>
     </file>
 </xliff>

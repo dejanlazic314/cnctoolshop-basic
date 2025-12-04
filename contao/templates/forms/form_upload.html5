@@ -1,0 +1,58 @@
+<?php
+// Custom drag & drop file upload template
+?>
+
+<div class="widget ca widget-upload<?= $this->class ? ' ' . $this->class : '' ?><?= $this->mandatory ? ' mandatory' : '' ?>">
+    <?php if ($this->label): ?>
+        <label<?= $this->mandatory ? ' class="mandatory"' : '' ?>>
+            <?php if ($this->mandatory): ?>
+                <span class="invisible">Mandatory field </span>
+            <?php endif; ?>
+            <?= $this->label ?>
+            <?php if ($this->mandatory): ?>
+                <span class="mandatory">*</span>
+            <?php endif; ?>
+        </label>
+    <?php endif; ?>
+
+    <div class="upload-dropzone" data-upload-target>
+        <input 
+            type="file" 
+            name="<?= $this->name ?><?= $this->multiple ? '[]' : '' ?>" 
+            id="ctrl_<?= $this->id ?>" 
+            class="upload<?= $this->class ? ' ' . $this->class : '' ?><?= $this->mandatory ? ' mandatory' : '' ?>"
+            <?= $this->accept ? ' accept="' . $this->accept . '"' : '' ?>
+            <?= $this->multiple ? ' multiple' : '' ?>
+            <?= $this->required ? ' required' : '' ?>
+            <?= $this->attributes ?>
+        >
+        
+        <div class="dropzone-content">
+            <div class="dropzone-icon">
+                <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M24 32V12M24 12L16 20M24 12L32 20" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M8 32V38C8 39.0609 8.42143 40.0783 9.17157 40.8284C9.92172 41.5786 10.9391 42 12 42H36C37.0609 42 38.0783 41.5786 38.8284 40.8284C39.5786 40.0783 40 39.0609 40 38V32" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+            <p class="dropzone-text">
+                <span class="dropzone-link">Izaberite fajl</span>
+                <span class="dropzone-or">ili prevucite ovde</span>
+            </p>
+            <?php if ($this->accept): ?>
+                <p class="dropzone-formats">
+                    Dozvoljeni formati: <?= str_replace(',', ', ', str_replace('.', '', $this->accept)) ?>
+                </p>
+            <?php endif; ?>
+        </div>
+
+        <div class="dropzone-preview" data-upload-preview></div>
+    </div>
+
+    <?php if ($this->description): ?>
+        <p class="upload-description"><?= $this->description ?></p>
+    <?php endif; ?>
+
+    <?php if ($this->hasErrors()): ?>
+        <p class="error"><?= $this->getErrorAsString() ?></p>
+    <?php endif; ?>
+</div>

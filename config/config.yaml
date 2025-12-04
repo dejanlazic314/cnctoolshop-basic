@@ -1,5 +1,7 @@
 ---
 contao:
+  localconfig:
+    uploadTypes: 'jpg,jpeg,png,gif,svg,webp,pdf,dxf,dwg,step,stp,stl,iges,igs'
   image:
     sizes:
       _defaults:

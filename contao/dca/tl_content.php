@@ -20,7 +20,7 @@ $GLOBALS['TL_DCA']['tl_content']['palettes']['heroSection'] =
     '{invisible_legend:hide},invisible,start,stop';
 
 $GLOBALS['TL_DCA']['tl_content']['palettes']['gridSection'] = 
-    '{type_legend},type,headline,subheadline;'.
+    '{type_legend},type,overheadline,headline;'.
     '{text_legend},textOptional;'.
     '{items_legend},gridItems;'.
     '{protected_legend:hide},protected;'.
@@ -28,7 +28,7 @@ $GLOBALS['TL_DCA']['tl_content']['palettes']['gridSection'] =
     '{invisible_legend:hide},invisible,start,stop';
 
 $GLOBALS['TL_DCA']['tl_content']['palettes']['processSteps'] = 
-    '{type_legend},type,headline,subheadline;'.
+    '{type_legend},type,overheadline,headline;'.
     '{text_legend},textOptional;'.
     '{items_legend},stepsCards;'.
     '{protected_legend:hide},protected;'.
@@ -82,7 +82,9 @@ $GLOBALS['TL_DCA']['tl_content']['palettes']['logoClients'] =
     '{invisible_legend:hide},invisible,start,stop';  
 
 $GLOBALS['TL_DCA']['tl_content']['palettes']['contactForm'] = 
-'{type_legend},type,headline,subheadline;'.
+'{type_legend},type;'.
+'{layout_legend},formLayoutType;'.
+'{headline_legend},overheadline,headline;'.
 '{text_legend},textOptional;'.
 '{items_legend},formpicker;'.
 '{protected_legend:hide},protected;'.
@@ -102,6 +104,26 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['url']['eval']['mandatory'] = false;
 $GLOBALS['TL_DCA']['tl_content']['fields']['multiSRC']['load_callback'][] = array('tl_content_ab', 'setMultiSrcFlags');
 
 // Fields
+// Overheadline
+$GLOBALS['TL_DCA']['tl_content']['fields']['overheadline'] = array
+(
+    'search' => true,
+    'inputType' => 'text',
+    'eval' => array('maxlength' => 255, 'tl_class' => 'w50 clr'),
+    'sql' => "varchar(255) NOT NULL default ''"
+);
+// Layout Type for form
+$GLOBALS['TL_DCA']['tl_content']['fields']['formLayoutType'] = [
+    'label' => ['Layout', 'Choose the form layout'],
+    'inputType' => 'select',
+    'options' => [
+        'split'    => 'Split (info on the left, form on the right)',
+        'centered' => 'Centered (form in the middle)',
+    ],
+    'default' => 'split',
+    'eval' => ['tl_class' => 'w50'],
+    'sql' => "varchar(32) NOT NULL default 'split'"
+];
 // Form Picker
 $GLOBALS['TL_DCA']['tl_content']['fields']['formpicker'] = array
 (
