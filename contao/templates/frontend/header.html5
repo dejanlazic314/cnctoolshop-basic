@@ -19,7 +19,7 @@
                 <a href="/" class="header-lang-switcher-btn is-active" hreflang="sr">SR</a>
                 <a href="/en" class="header-lang-switcher-btn" hreflang="en">EN</a>
             </div>
-            <a href="{{link_url::kontakt}}" class="header-cta">Zatražite ponudu</a>
+            <a href="{{link_url::19}}" class="header-cta">Zatražite ponudu</a>
         </div>
 
         <button class="header-toggle" id="mobile-toggle" 
@@ -34,7 +34,7 @@
     </div>
 
     <div class="header-mobile-extras">
-        <a href="{{link_url::kontakt}}" class="header-mobile-cta">Zatražite ponudu</a>
+        <a href="{{link_url::19}}" class="header-mobile-cta">Zatražite ponudu</a>
         <div class="header-mobile-lang">
             <a href="/" class="is-active" hreflang="sr">Srpski</a>
             <a href="/en" hreflang="en">English</a>
