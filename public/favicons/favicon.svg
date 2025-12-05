@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" width="77" height="90.17"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 77 90.17" class="logo">
+  <!-- CNC machine (green) -->
+  <path fill="#2F9E44" d="M76.671 13V6.575H48.193V.17H29.207v6.405H.73V90.17h6.328V19.443h22.15v12.85h6.482v19.33h6.022v-19.33h6.482v-12.85h22.15V90.17h6.328V13zM41.826 25.83h-6.252V6.651h6.252z"></path>
+  
+  <!-- Metal (gray) -->
+  <path fill="#BFC5C9" d="M48.193 64.434H29.207V70.8h-9.493v19.37h37.972V70.8h-9.493zm3.126 12.906v6.348H26.08V77.34z"></path>
+</svg><style>@media (prefers-color-scheme: light) { :root { filter: none; } }
+@media (prefers-color-scheme: dark) { :root { filter: none; } }
+</style></svg>

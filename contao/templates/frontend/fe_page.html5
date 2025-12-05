@@ -1,3 +1,10 @@
+<?php 
+
+use Contao\Environment;
+use Contao\Input;
+
+?>
+
 <!DOCTYPE html>
 <html lang="<?= $this->language ?>"<?php if ($this->isRTL): ?> dir="rtl"<?php endif; ?>>
 <head>
@@ -11,6 +18,15 @@
       <meta name="robots" content="<?= $this->robots ?>">
       <meta name="description" content="<?= Contao\StringUtil::substr($this->description, 320) ?>">
       <meta name="generator" content="Contao Open Source CMS">
+      <?php // Social Sharing ?>
+      <meta property="og:title" content="<?= $this->pageTitle ?>">
+      <?php if(Input::get('auto_item', false, true)): ?>
+      <meta property="og:type" content="article" />
+      <?php else: ?>
+      <meta property="og:type" content="website" />
+      <?php endif; ?>
+      <meta property="og:url" content="<?= Environment::get('uri') ?>">
+      <meta property="og:description" content="<?= $this->description ?>">      
     <?php $this->endblock(); ?>
 
     <?php if ($this->canonical): ?>
@@ -22,6 +38,13 @@
     <?= $this->stylesheets ?>
     <?= $this->mooScripts ?>
     <?= $this->head ?>
+
+    <link rel="icon" type="image/png" href="bundles/cnctoolshop/favicons/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="bundles/cnctoolshop/favicons/favicon.svg" />
+    <link rel="shortcut icon" href="bundles/cnctoolshop/favicons/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="bundles/cnctoolshop/favicons/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="cnctoolshop" />
+    <link rel="manifest" href="bundles/cnctoolshop/favicons/site.webmanifest" />
 
     <?php  
         $GLOBALS['TL_CSS'][] = 'bundles/cnctoolshop/css/globals.scss|static';
