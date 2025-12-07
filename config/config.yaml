@@ -83,14 +83,14 @@ contao:
             width: 560
       gridsection:
         width: 420
-        height: 280
+        height: 315
         items:
           - media: '(min-width: 768px)'
             width: 444
-            height: 296
+            height: 333
           - media: '(min-width: 640px)'
             width: 680
-            height: 560
+            height: 510
           - media: '(min-width: 480px)'
             width: 564
-            height: 376
+            height: 423
