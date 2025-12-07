@@ -60,12 +60,8 @@ use Contao\Input;
 
     <div id="wrapper">
 
-      <header id="header">
-        <div class="inside">
-          {{file_vendor::dejanlazic314/cnctoolshop-basic/contao/templates/frontend/header.html5}}
-        </div>
-      </header>
-      
+      {{file_vendor::dejanlazic314/cnctoolshop-basic/contao/templates/frontend/header.html5}}
+
       <?php $this->sections('before'); ?>
 
       <?php $this->block('container'); ?>

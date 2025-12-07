@@ -28,22 +28,32 @@
     }
 
     &-item {
+      position: relative;
       width: 100%;
-      border-top-left-radius: 6.25rem;
-      border-bottom-right-radius: 6.25rem;
-      box-shadow: 0 20px 24px -4px rgba(0, 0, 0, 0.1),
-        0 8px 8px -4px rgba(16, 24, 40, 0.1);
-      transition: transform 0.75s ease;
-      transform: translateY(0);
-      overflow: hidden;
       cursor: pointer;
 
       &:hover {
-        transform: translateY(-20px);
-
+        figure {
+          transform: translateY(-20px);
+        }
         img {
           transform: scale(1.15);
         }
+
+        .zoom-overlay {
+          opacity: 1;
+          transform: translateY(-20px);
+        }
+      }
+
+      figure {
+        border-top-left-radius: 6.25rem;
+        border-bottom-right-radius: 6.25rem;
+        box-shadow: 0 20px 24px -4px rgba(0, 0, 0, 0.1),
+          0 8px 8px -4px rgba(16, 24, 40, 0.1);
+        overflow: hidden;
+        transition: transform 0.75s ease;
+        transform: translateY(0);
       }
 
       img {
@@ -51,6 +61,48 @@
         height: 100%;
         object-fit: cover;
         transition: transform 0.75s ease;
+      }
+
+      .zoom-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.55);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-top-left-radius: 6.25rem;
+        border-bottom-right-radius: 6.25rem;
+        color: $white;
+        opacity: 0;
+        transition: opacity 0.3s ease, transform 0.75s ease;
+        overflow: hidden;
+
+        @include breakpoint-max($max-tablet) {
+          top: auto;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          display: flex;
+          align-items: flex-end;
+          justify-content: flex-start;
+          height: 6.25rem;
+          padding: 12px;
+          border-top-left-radius: 0;
+          background: linear-gradient(
+            to top,
+            rgba(0, 0, 0, 0.5) 0%,
+            transparent 100%
+          );
+          opacity: 1;
+
+          svg {
+            width: 34px;
+            height: auto;
+          }
+        }
       }
     }
   }
@@ -90,22 +142,19 @@
       position: absolute;
       top: 2rem;
       right: 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       width: 3.5rem;
       height: 3.5rem;
       background: rgba(255, 255, 255, 0.1);
       border: 2px solid rgba(255, 255, 255, 0.2);
       border-radius: 50%;
       color: white;
-      font-size: 2rem;
-      font-weight: 300;
-      line-height: 1;
-      cursor: pointer;
-      z-index: 10001;
-      display: flex;
-      align-items: center;
-      justify-content: center;
       transition: all 0.3s ease;
       backdrop-filter: blur(10px);
+      z-index: 10001;
+      cursor: pointer;
 
       &:hover {
         background: rgba($color-red, 0.9);
@@ -113,12 +162,21 @@
         transform: rotate(90deg) scale(1.1);
       }
 
+      svg {
+        width: 1.5rem;
+        height: 1.5rem;
+      }
+
       @include breakpoint-max($max-tablet) {
         top: 1rem;
         right: 1rem;
         width: 3rem;
         height: 3rem;
-        font-size: 1.5rem;
+
+        svg {
+          width: 1.2rem;
+          height: 1.2rem;
+        }
       }
     }
   }
@@ -128,15 +186,6 @@
     width: 100%;
     max-width: 90vw;
     max-height: 90vh;
-    //padding: 0 5rem;
-
-    // @include breakpoint-max($max-tablet) {
-    //   padding: 0 3rem;
-    // }
-
-    // @include breakpoint-max($max-mobile) {
-    //   padding: 0 2rem;
-    // }
 
     &:not(.is-initialized) {
       opacity: 0;
@@ -191,13 +240,16 @@
     &__arrow {
       position: absolute;
       top: 50%;
-      transform: translateY(-50%);
-      background: rgba(255, 255, 255, 0.1);
-      border: 2px solid rgba(255, 255, 255, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
       width: 3.5rem;
       height: 3.5rem;
+      background: rgba(255, 255, 255, 0.1);
+      border: 2px solid rgba(255, 255, 255, 0.2);
       border-radius: 50%;
       backdrop-filter: blur(10px);
+      transform: translateY(-50%);
       transition: all 0.3s ease;
       opacity: 0.8;
       z-index: 2;
@@ -227,18 +279,10 @@
         svg {
           scale: -1;
         }
-
-        // @include breakpoint-max($max-tablet) {
-        //   left: 0.5rem;
-        // }
       }
 
       &--next {
         right: -2.5vw;
-
-        // @include breakpoint-max($max-tablet) {
-        //   right: 0.5rem;
-        // }
       }
 
       @include breakpoint-max($max-tablet) {

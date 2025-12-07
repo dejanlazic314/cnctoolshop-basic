@@ -1,6 +1,9 @@
 <?php
     use Magmell\Contao\Basic\VHUGUtil;
     VHUGUtil::include_css('bundles/cnctoolshop/css/elements/ce_gridSection.scss|static');
+
+    $GLOBALS['TL_JAVASCRIPT'][] = "bundles/cnctoolshop/js/elements/ce_gridSection.js|static";
+
 ?>
 
 <?php $this->extend('block_searchable'); ?>
@@ -17,13 +20,19 @@
 
             <?php if($item['url']): ?>
                 <a href="<?= $item['url'] ?>" class="grid-item-link">
+                    {{figure::<?= $item['singleSRC'] ?>?size=_gridsection&options[attr][class]=grid-item-media}}
+            <?php else: ?>
+                <div class="grid-item-media lightbox-trigger" data-src="<?= htmlspecialchars($item['lightboxSrc'] ?? '') ?>">
+                    {{figure::<?= $item['singleSRC'] ?>?size=_gridsection}}
+                    
+                    <div class="zoom-overlay">
+                        {{file_vendor::dejanlazic314/cnctoolshop-basic/public/icons/zoom-icon.html5}}
+                    </div>
+                </div>
             <?php endif; ?>
-                {{figure::<?= $item['singleSRC'] ?>?size=_gridsection&options[attr][class]=grid-item-media}}
 
                 <div class="grid-item-content">
-
                     <h3 class="grid-item-title"><?= $item['headline']?></h3>
-                    
                     <div class="grid-item-text"><?= $item['text'] ?></div>
                     
                 <?php if($item['url']): ?>
@@ -33,6 +42,7 @@
                     </div>
                 <?php endif; ?>
                 </div>
+
             <?php if($item['url']): ?>
                 </a>
             <?php endif; ?>             
@@ -40,6 +50,16 @@
         <?php endforeach; ?>
         </ul>
     </div>
+
+    <div class="lightbox-modal">    
+        <button class="lightbox-close" aria-label="Close">
+            {{file_vendor::dejanlazic314/cnctoolshop-basic/public/icons/close-icon.html5}}
+        </button>
+        <div class="lightbox-content">
+            <img class="lightbox-image" src="" alt="">
+        </div>
+    </div>
+
     <div class="decoration left">
         {{file_vendor::dejanlazic314/cnctoolshop-basic/public/icons/animated-gears.html5}}
     </div>

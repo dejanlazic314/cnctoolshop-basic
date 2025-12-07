@@ -1,21 +1,28 @@
 document.addEventListener('DOMContentLoaded', () => {
-  function initGallery(element) {
+  function initLightbox(container) {
     const body = document.body;
     const header = document.getElementById('header');
-    const items = element.querySelectorAll('.gallery-item');
-    const modal = element.querySelector('.lightbox-modal');
-    const closeBtn = modal.querySelector('.lightbox-close');
-    const splideElement = modal.querySelector('.splide');
+    const triggers = container.querySelectorAll('.lightbox-trigger');
+    const modal = container.querySelector('.lightbox-modal');
 
-    let splide = null;
+    if (!modal || triggers.length === 0) return;
+
+    const closeBtn = modal.querySelector('.lightbox-close');
+    const image = modal.querySelector('.lightbox-image');
 
     const getScrollbarWidth = () => {
       return window.innerWidth - document.documentElement.clientWidth;
     };
 
-    items.forEach((item, index) => {
-      item.addEventListener('click', () => {
-        openLightbox(index);
+    triggers.forEach((trigger) => {
+      trigger.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+
+        const src = trigger.dataset.src;
+        if (src) {
+          openLightbox(src);
+        }
       });
     });
 
@@ -31,26 +38,13 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
 
-    function openLightbox(startIndex) {
+    function openLightbox(src) {
+      image.src = src;
       modal.classList.add('active');
       const scrollbarWidth = getScrollbarWidth();
       body.style.paddingRight = `${scrollbarWidth}px`;
       header.style.paddingRight = `${scrollbarWidth}px`;
       document.body.style.overflow = 'hidden';
-
-      if (!splide) {
-        splide = new Splide(splideElement, {
-          type: 'loop',
-          start: startIndex,
-          keyboard: true,
-          arrows: true,
-          pagination: true,
-        });
-
-        splide.mount();
-      } else {
-        splide.go(startIndex);
-      }
     }
 
     function closeLightbox() {
@@ -58,10 +52,11 @@ document.addEventListener('DOMContentLoaded', () => {
       body.style.paddingRight = '';
       header.style.paddingRight = '';
       document.body.style.overflow = '';
+      image.src = '';
     }
   }
 
-  document.querySelectorAll('.ce_imageShowcase').forEach((element) => {
-    initGallery(element);
+  document.querySelectorAll('.ce_gridSection').forEach((element) => {
+    initLightbox(element);
   });
 });

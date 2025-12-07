@@ -21,13 +21,18 @@
     <?php foreach ($this->multiSRC as $index => $image): ?>
         <div class="gallery-item" data-index="<?= $index ?>">
             {{figure::<?= $image ?>?size=_textimage}}
+            <div class="zoom-overlay">
+                {{file_vendor::dejanlazic314/cnctoolshop-basic/public/icons/zoom-icon.html5}}
+            </div>
         </div>
     <?php endforeach; ?>
     </div>
 
   <!-- Lightbox Modal -->
   <div class="lightbox-modal">
-    <button class="lightbox-close" aria-label="Close">&times;</button>
+    <button class="lightbox-close" aria-label="Close">
+        {{file_vendor::dejanlazic314/cnctoolshop-basic/public/icons/close-icon.html5}}
+    </button>
     
         <!-- Splide Container -->
         <div class="splide" id="splide-<?= $this->id ?>">
@@ -35,7 +40,7 @@
                 <ul class="splide__list">
                 <?php foreach ($this->multiSRC as $image): ?>
                     <li class="splide__slide">
-                        {{figure::<?= $image ?>?size=_imageshowcase}}
+                        {{figure::<?= $image ?>?size=_lightbox}}
                     </li>
                 <?php endforeach; ?>
                 </ul>
@@ -43,4 +48,5 @@
         </div>
     </div>
 <?php $this->endblock(); ?>
+
 

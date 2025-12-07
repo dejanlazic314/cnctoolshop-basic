@@ -69,7 +69,7 @@ contao:
           - media: '(min-width: 640px)'
             width: 680
             height: 680
-      imageshowcase:
+      lightbox:
         resize_mode: proportional
         width: 450
         items:
