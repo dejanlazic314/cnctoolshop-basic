@@ -1,2 +1,5 @@
 ftpsync.settings
 .vscode/sftp.json
+.env
+.env.local
+.env.*.local
