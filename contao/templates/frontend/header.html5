@@ -29,7 +29,7 @@
 
 <header class="header" id="header">
     <div class="header-inner">
-        <a href="/" class="header-logo" title="CNC Toolshop">
+        <a href="{{iflng::sr}}{{link_url::3}}{{iflng}}{{iflng::en}}{{link_url::5}}{{iflng}}" class="header-logo" title="CNC Toolshop">
             {{file_vendor::dejanlazic314/cnctoolshop-basic/public/icons/cnctoolshop-logo.html5}}
         </a>
 
