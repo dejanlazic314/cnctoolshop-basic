@@ -4,11 +4,15 @@ namespace Contao;
 
 if ($GLOBALS['TL_CONFIG']['useRTE']):
 
-    // Use document.write() here in case TinyMCE is loaded in a subpalette (see #1424)
+    // Load TinyMCE via a dynamically created <script> with onload, instead of
+    // document.write(), which silently fails when this template is injected
+    // via AJAX (e.g. Contao's backend fetch-based navigation) rather than a
+    // full page load.
     ?>
-    <script>window.tinymce || document.write('<script src="<?= $this->asset('js/tinymce.min.js', 'contao-components/tinymce4') ?>">\x3C/script>')</script>
     <script>
-        window.tinymce && tinymce.init({
+    (function () {
+        function initTinyMce() {
+        tinymce.init({
             selector: '#<?= $this->selector ?>',
             license_key: 'gpl',
             min_height: 336,
@@ -112,5 +116,16 @@ if ($GLOBALS['TL_CONFIG']['useRTE']):
       browser_spellcheck: true,
             importcss_append: true
         });
+        }
+
+        if (window.tinymce) {
+            initTinyMce();
+        } else {
+            var tinyScript = document.createElement('script');
+            tinyScript.src = '<?= $this->asset('js/tinymce.min.js', 'contao-components/tinymce4') ?>';
+            tinyScript.onload = initTinyMce;
+            document.head.appendChild(tinyScript);
+        }
+    })();
     </script>
 <?php endif; ?>

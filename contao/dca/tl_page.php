@@ -46,3 +46,20 @@ $GLOBALS['TL_DCA']['tl_page']['fields']['descriptiontitle'] = array
     'eval' => array('maxlength'=>255, 'tl_class'=>'w50 clr'),
     'sql' => "varchar(255) NOT NULL default ''"
 );
+
+// Language counterpart (used by the dynamic language switcher)
+$GLOBALS['TL_DCA']['tl_page']['palettes']['regular'] = str_replace(
+    "{navigation_legend},addImageForHeader,descriptiontitle;",
+    "{navigation_legend},addImageForHeader,descriptiontitle;{language_legend},languageMain;",
+    $GLOBALS['TL_DCA']['tl_page']['palettes']['regular']
+);
+
+$GLOBALS['TL_DCA']['tl_page']['fields']['languageMain'] = array(
+    'label' => array('Translation of page', 'Select the page (in the other language) that this page is a translation of. The language switcher uses this to link to the matching page instead of always going to the homepage.'),
+    'exclude' => true,
+    'inputType' => 'pageTree',
+    'foreignKey' => 'tl_page.title',
+    'eval' => array('fieldType' => 'radio', 'tl_class' => 'clr'),
+    'sql' => "int(10) unsigned NOT NULL default 0",
+    'relation' => array('type' => 'hasOne', 'load' => 'lazy')
+);
