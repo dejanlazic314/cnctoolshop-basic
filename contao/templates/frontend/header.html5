@@ -1,7 +1,30 @@
 <?php
     use Magmell\Contao\Basic\VHUGUtil;
+    use Cnctoolshop\Classes\LanguageSwitcher;
     VHUGUtil::include_css('bundles/cnctoolshop/css/frontend/header.scss|static');
     $GLOBALS['TL_JAVASCRIPT'][] = "bundles/cnctoolshop/js/frontend/header.js|static";
+
+    // Default to each language's homepage, then try to find the actual
+    // translation counterpart of the page currently being viewed.
+    $langSwitcherSrId = 3;
+    $langSwitcherEnId = 5;
+
+    if ($GLOBALS['objPage'] instanceof \Contao\PageModel) {
+        $objCurrentPage = $GLOBALS['objPage'];
+        $objCounterpart = LanguageSwitcher::getCounterpartPage($objCurrentPage);
+
+        if ($objCurrentPage->language === 'sr') {
+            $langSwitcherSrId = $objCurrentPage->id;
+            if ($objCounterpart !== null) {
+                $langSwitcherEnId = $objCounterpart->id;
+            }
+        } elseif ($objCurrentPage->language === 'en') {
+            $langSwitcherEnId = $objCurrentPage->id;
+            if ($objCounterpart !== null) {
+                $langSwitcherSrId = $objCounterpart->id;
+            }
+        }
+    }
 ?>
 
 <header class="header" id="header">
@@ -16,10 +39,10 @@
 
         <div class="header-actions">
             <div class="header-lang-switcher">
-                <a href="/" class="header-lang-switcher-btn is-active" hreflang="sr">SR</a>
-                <a href="/en" class="header-lang-switcher-btn" hreflang="en">EN</a>
+                <a href="{{link_url::<?= $langSwitcherSrId ?>}}" class="header-lang-switcher-btn{{iflng::sr}} is-active{{iflng}}" hreflang="sr">SR</a>
+                <a href="{{link_url::<?= $langSwitcherEnId ?>}}" class="header-lang-switcher-btn{{iflng::en}} is-active{{iflng}}" hreflang="en">EN</a>
             </div>
-            <a href="{{link_url::19}}" class="header-cta">Zatražite ponudu</a>
+            <a href="{{iflng::sr}}{{link_url::6}}{{iflng}}{{iflng::en}}{{link_url::7}}{{iflng}}" class="header-cta">{{iflng::sr}}Zatražite ponudu{{iflng}}{{iflng::en}}Request a Quote{{iflng}}</a>
         </div>
 
         <button class="header-toggle" id="mobile-toggle" 

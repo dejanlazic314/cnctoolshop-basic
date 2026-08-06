@@ -35,12 +35,12 @@
                 </svg>
             </div>
             <p class="dropzone-text">
-                <span class="dropzone-link">Izaberite fajl</span>
-                <span class="dropzone-or">ili prevucite ovde</span>
+                <span class="dropzone-link">{{iflng::sr}}Izaberite fajl{{iflng}}{{iflng::en}}Choose a file{{iflng}}</span>
+                <span class="dropzone-or">{{iflng::sr}}ili prevucite ovde{{iflng}}{{iflng::en}}or drag it here{{iflng}}</span>
             </p>
             <?php if ($this->accept): ?>
                 <p class="dropzone-formats">
-                    Dozvoljeni formati: <?= str_replace(',', ', ', str_replace('.', '', $this->accept)) ?>
+                    {{iflng::sr}}Dozvoljeni formati{{iflng}}{{iflng::en}}Allowed formats{{iflng}}: <?= str_replace(',', ', ', str_replace('.', '', $this->accept)) ?>
                 </p>
             <?php endif; ?>
         </div>
