@@ -2,6 +2,14 @@
 
 use Contao\Environment;
 use Contao\Input;
+use Contao\PageModel;
+use Cnctoolshop\Classes\LanguageSwitcher;
+
+$objHreflangCounterpart = null;
+
+if ($GLOBALS['objPage'] instanceof PageModel) {
+    $objHreflangCounterpart = LanguageSwitcher::getCounterpartPage($GLOBALS['objPage']);
+}
 
 ?>
 
@@ -31,6 +39,13 @@ use Contao\Input;
 
     <?php if ($this->canonical): ?>
       <link rel="canonical" href="<?= $this->canonical ?>">
+    <?php endif; ?>
+
+    <?php if ($GLOBALS['objPage'] instanceof PageModel): ?>
+      <link rel="alternate" hreflang="<?= $GLOBALS['objPage']->language ?>" href="<?= Environment::get('uri') ?>">
+      <?php if ($objHreflangCounterpart !== null): ?>
+        <link rel="alternate" hreflang="<?= $objHreflangCounterpart->language ?>" href="<?= $objHreflangCounterpart->getAbsoluteUrl() ?>">
+      <?php endif; ?>
     <?php endif; ?>
 
     <?= $this->viewport ?>

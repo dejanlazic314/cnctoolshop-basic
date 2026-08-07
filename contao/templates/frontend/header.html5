@@ -57,10 +57,10 @@
     </div>
 
     <div class="header-mobile-extras">
-        <a href="{{link_url::19}}" class="header-mobile-cta">Zatražite ponudu</a>
+        <a href="{{iflng::sr}}{{link_url::6}}{{iflng}}{{iflng::en}}{{link_url::7}}{{iflng}}" class="header-mobile-cta">{{iflng::sr}}Zatražite ponudu{{iflng}}{{iflng::en}}Request a Quote{{iflng}}</a>
         <div class="header-mobile-lang">
-            <a href="/" class="is-active" hreflang="sr">Srpski</a>
-            <a href="/en" hreflang="en">English</a>
+            <a href="{{link_url::<?= $langSwitcherSrId ?>}}" class="{{iflng::sr}}is-active{{iflng}}" hreflang="sr">Srpski</a>
+            <a href="{{link_url::<?= $langSwitcherEnId ?>}}" class="{{iflng::en}}is-active{{iflng}}" hreflang="en">English</a>
         </div>
     </div>
 </header>
