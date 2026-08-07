@@ -35,7 +35,7 @@
       }
 
       @media (min-width: $min-laptop) {
-        grid-template-columns: 1.5fr 1fr 1fr 1fr;
+        grid-template-columns: 1.5fr 1fr 1fr;
         gap: 3rem;
       }
     }
@@ -49,6 +49,12 @@
 
       @media (min-width: $min-laptop) {
         grid-column: span 1;
+      }
+    }
+
+    &--services {
+      @media (min-width: $min-laptop) {
+        display: none;
       }
     }
   }
