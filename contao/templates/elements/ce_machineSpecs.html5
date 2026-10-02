@@ -1,0 +1,81 @@
+<?php
+    use Magmell\Contao\Basic\VHUGUtil;
+    VHUGUtil::include_css('bundles/cnctoolshop/css/elements/ce_machineSpecs.scss|static');
+?>
+
+<?php $this->extend('block_searchable'); ?>
+<?php $this->block('headline'); ?>
+<?php $this->endblock(); ?>
+
+<?php $this->block('content'); ?>
+<div class="inside">
+
+    <?php if ($this->overheadline || $this->headline || $this->textOptional): ?>
+    <div class="section-head">
+        <?php if ($this->overheadline): ?>
+            <p class="eyebrow"><?= $this->overheadline ?></p>
+        <?php endif; ?>
+
+        <?php if ($this->headline): ?>
+            <<?= $this->hl ?> class="headline"><?= $this->headline ?></<?= $this->hl ?>>
+        <?php endif; ?>
+
+        <?php if ($this->textOptional): ?>
+            <div class="text"><?= $this->textOptional ?></div>
+        <?php endif; ?>
+    </div>
+    <?php endif; ?>
+
+    <div class="machine-grid">
+    <?php foreach ($this->items as $item): ?>
+        <article class="machine-card">
+
+            <?php if (!empty($item['singleSRC'])): ?>
+                <div class="machine-photo">
+                    {{figure::<?= $item['singleSRC'] ?>?size=_gridsection&options[attr][alt]=<?= htmlspecialchars($item['headline'] ?? '') ?>}}
+                </div>
+            <?php endif; ?>
+
+            <div class="machine-body">
+                <div>
+                    <?php if (!empty($item['kicker'])): ?>
+                        <p class="machine-kicker"><?= $item['kicker'] ?></p>
+                    <?php endif; ?>
+
+                    <?php if (!empty($item['headline'])): ?>
+                        <h3 class="machine-name"><?= $item['headline'] ?></h3>
+                    <?php endif; ?>
+                </div>
+
+                <?php if (!empty($item['spec1Value']) || !empty($item['spec2Value'])): ?>
+                <div class="spec-row">
+                    <?php if (!empty($item['spec1Value'])): ?>
+                        <div class="spec">
+                            <span class="spec-label"><?= $item['spec1Label'] ?></span>
+                            <span class="spec-value"><?= $item['spec1Value'] ?></span>
+                        </div>
+                    <?php endif; ?>
+
+                    <?php if (!empty($item['spec2Value'])): ?>
+                        <div class="spec">
+                            <span class="spec-label"><?= $item['spec2Label'] ?></span>
+                            <span class="spec-value"><?= $item['spec2Value'] ?></span>
+                        </div>
+                    <?php endif; ?>
+                </div>
+                <?php endif; ?>
+
+                <?php if (!empty($item['text'])): ?>
+                    <div class="machine-note"><?= $item['text'] ?></div>
+                <?php endif; ?>
+
+                <?php if (!empty($item['chip'])): ?>
+                    <span class="machine-chip"><?= $item['chip'] ?></span>
+                <?php endif; ?>
+            </div>
+        </article>
+    <?php endforeach; ?>
+    </div>
+
+</div>
+<?php $this->endblock(); ?>

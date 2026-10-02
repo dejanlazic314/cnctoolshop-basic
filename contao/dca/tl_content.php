@@ -81,7 +81,7 @@ $GLOBALS['TL_DCA']['tl_content']['palettes']['logoClients'] =
     '{expert_legend:hide},cssID;'.
     '{invisible_legend:hide},invisible,start,stop';  
 
-$GLOBALS['TL_DCA']['tl_content']['palettes']['contactForm'] = 
+$GLOBALS['TL_DCA']['tl_content']['palettes']['contactForm'] =
 '{type_legend},type;'.
 '{layout_legend},formLayoutType;'.
 '{headline_legend},overheadline,headline;'.
@@ -90,6 +90,14 @@ $GLOBALS['TL_DCA']['tl_content']['palettes']['contactForm'] =
 '{protected_legend:hide},protected;'.
 '{expert_legend:hide},cssID;'.
 '{invisible_legend:hide},invisible,start,stop';
+
+$GLOBALS['TL_DCA']['tl_content']['palettes']['machineSpecs'] =
+    '{type_legend},type,overheadline,headline;'.
+    '{text_legend},textOptional;'.
+    '{items_legend},machineItems;'.
+    '{protected_legend:hide},protected;'.
+    '{expert_legend:hide},cssID;'.
+    '{invisible_legend:hide},invisible,start,stop';
 
 // Subpalettes - dinamički prikazuje polja
 // Override add image subpallete
@@ -279,6 +287,64 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['stepsCards'] = [
             'label' => array('Icon'),
             'inputType' => 'fileTree',
             'eval' => array('filesOnly'=>true, 'extensions'=>'svg,png', 'fieldType'=>'radio')
+        ],
+    ],
+    'min' => 1,
+    'max' => 999,
+    'sql' => [
+        'type' => 'blob',
+        'notnull' => false,
+    ],
+];
+
+// Machine Spec Cards
+$GLOBALS['TL_DCA']['tl_content']['fields']['machineItems'] = [
+    'inputType' => 'group',
+    'palette' => ['singleSRC', 'kicker', 'headline', 'spec1Label', 'spec1Value', 'spec2Label', 'spec2Value', 'text', 'chip'],
+    'fields' => [
+        'kicker' => [
+            'label' => ['Kicker', 'Short label above the name, e.g. "Strug"'],
+            'inputType' => 'text',
+            'eval' => ['mandatory' => false, 'maxlength' => 64, 'tl_class' => 'w50 clr'],
+            'sql' => "varchar(64) NOT NULL default ''"
+        ],
+        '&headline' => [
+            'label' => &$GLOBALS['TL_LANG']['MSCGRP']['title'],
+            'eval' => ['tl_class' => "w50"]
+        ],
+        'spec1Label' => [
+            'label' => ['Spec 1 — label', 'e.g. "Ø max"'],
+            'inputType' => 'text',
+            'eval' => ['mandatory' => false, 'maxlength' => 32, 'tl_class' => 'w50 clr'],
+            'sql' => "varchar(32) NOT NULL default ''"
+        ],
+        'spec1Value' => [
+            'label' => ['Spec 1 — value', 'e.g. "560 mm"'],
+            'inputType' => 'text',
+            'eval' => ['mandatory' => false, 'maxlength' => 32, 'tl_class' => 'w50'],
+            'sql' => "varchar(32) NOT NULL default ''"
+        ],
+        'spec2Label' => [
+            'label' => ['Spec 2 — label', 'e.g. "L max"'],
+            'inputType' => 'text',
+            'eval' => ['mandatory' => false, 'maxlength' => 32, 'tl_class' => 'w50 clr'],
+            'sql' => "varchar(32) NOT NULL default ''"
+        ],
+        'spec2Value' => [
+            'label' => ['Spec 2 — value', 'e.g. "2000 mm"'],
+            'inputType' => 'text',
+            'eval' => ['mandatory' => false, 'maxlength' => 32, 'tl_class' => 'w50'],
+            'sql' => "varchar(32) NOT NULL default ''"
+        ],
+        '&text' => [
+            'label' => ['Note', 'One or two sentences about what this machine is good for'],
+            'eval' => ['mandatory' => false, 'tl_class' => "clr"]
+        ],
+        'chip' => [
+            'label' => ['Badge (optional)', 'e.g. "Najveći kapacitet" — leave empty to hide'],
+            'inputType' => 'text',
+            'eval' => ['mandatory' => false, 'maxlength' => 64, 'tl_class' => 'clr'],
+            'sql' => "varchar(64) NOT NULL default ''"
         ],
     ],
     'min' => 1,

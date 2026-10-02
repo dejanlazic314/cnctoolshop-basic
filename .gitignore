@@ -3,3 +3,4 @@ ftpsync.settings
 .env
 .env.local
 .env.*.local
+SERVER-ACCESS.local.md

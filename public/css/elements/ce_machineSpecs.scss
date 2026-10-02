@@ -1,0 +1,163 @@
+@import '../includes/includes.scss';
+
+.ce_machineSpecs {
+  padding-block: $padding-xhuge;
+
+  .inside {
+    @include container;
+  }
+
+  .section-head {
+    text-align: center;
+    max-width: 40rem;
+    margin: 0 auto clamp(2.5rem, 6vw, 4rem);
+
+    .headline {
+      @include headline-2;
+      font-weight: $fw-bold;
+      margin-bottom: $margin-small;
+    }
+
+    .text p {
+      @include body-font(l);
+      color: rgba($color-dark, $text-alpha);
+      margin: 0;
+    }
+  }
+
+  .eyebrow {
+    @include overline(l);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: $color-accent;
+    margin-bottom: $margin-xsmall;
+
+    &::before,
+    &::after {
+      content: '';
+      width: 1.25rem;
+      height: 1.5px;
+      background: $color-accent;
+      opacity: 0.5;
+    }
+  }
+
+  .machine-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: $margin-small;
+
+    @include breakpoint-min($min-tablet) {
+      grid-template-columns: repeat(3, 1fr);
+      gap: $margin-large;
+    }
+  }
+
+  .machine-card {
+    background: $white;
+    border-radius: $default-radius;
+    border-top-left-radius: 2.25rem;
+    border-bottom-right-radius: 2.25rem;
+    box-shadow: $shadow-large;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+
+  .machine-photo {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    background: $color-neutral-light;
+    flex-shrink: 0;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 35%;
+      display: block;
+    }
+  }
+
+  .machine-body {
+    padding: $margin-small $margin-medium $margin-medium;
+    display: flex;
+    flex-direction: column;
+    gap: $margin-small;
+  }
+
+  .machine-kicker {
+    @include overline(m);
+    color: $color-accent;
+    margin: 0 0 0.15rem;
+  }
+
+  .machine-name {
+    @include headline-5;
+    font-weight: $fw-bold;
+    margin: 0;
+  }
+
+  .spec-row {
+    display: flex;
+    border-top: 1px solid $color-neutral-light;
+    border-bottom: 1px solid $color-neutral-light;
+    padding-block: $margin-xsmall;
+  }
+
+  .spec {
+    flex: 1;
+    padding-inline: 0.25rem;
+
+    & + .spec {
+      border-left: 1px solid $color-neutral-light;
+      padding-left: 1rem;
+      margin-left: 0.25rem;
+    }
+  }
+
+  .spec-label {
+    @include overline(s);
+    display: block;
+    color: rgba($color-dark, 0.55);
+    margin-bottom: 0.25rem;
+  }
+
+  .spec-value {
+    @include stat-value;
+    color: $color-neutral-dark;
+    white-space: nowrap;
+  }
+
+  .machine-note {
+    @include body-font(s);
+    color: rgba($color-dark, $text-alpha);
+
+    p {
+      margin: 0;
+
+      &:last-child {
+        margin: 0;
+      }
+    }
+
+    strong {
+      color: $color-dark;
+    }
+  }
+
+  .machine-chip {
+    @include body-font(xs);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    align-self: flex-start;
+    font-weight: $fw-medium;
+    color: $color-accent;
+    background: rgba($color-accent, 0.08);
+    padding: 0.3rem 0.65rem;
+    border-radius: 999px;
+  }
+}
