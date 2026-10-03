@@ -28,6 +28,7 @@ $GLOBALS['TL_CTE']['Custom Elements']['imageShowcase'] = 'Cnctoolshop\ContentEle
 $GLOBALS['TL_CTE']['Custom Elements']['logoClients'] = 'Cnctoolshop\ContentElements\ContentLogoClients';
 $GLOBALS['TL_CTE']['Custom Elements']['contactForm'] = 'Cnctoolshop\ContentElements\ContentContactForm';
 $GLOBALS['TL_CTE']['Custom Elements']['machineSpecs'] = 'Cnctoolshop\ContentElements\ContentMachineSpecs';
+$GLOBALS['TL_CTE']['Custom Elements']['textSection'] = 'Cnctoolshop\ContentElements\ContentTextSection';
 
 // Hooks
 $GLOBALS['TL_HOOKS']['prepareFormData'][] = array('Cnctoolshop\EventListener\ProcessFormDataListener', '__invoke');

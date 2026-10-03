@@ -4,3 +4,4 @@ ftpsync.settings
 .env.local
 .env.*.local
 SERVER-ACCESS.local.md
+IMAGE-MAPPING.local.md

@@ -32,6 +32,9 @@
             <trans-unit id="CTE.machineSpecs.0">
                 <source>Machine Specs</source>
             </trans-unit>
+            <trans-unit id="CTE.textSection.0">
+                <source>Text Section</source>
+            </trans-unit>
         </body>
     </file>
 </xliff>

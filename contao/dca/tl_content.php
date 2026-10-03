@@ -81,6 +81,16 @@ $GLOBALS['TL_DCA']['tl_content']['palettes']['logoClients'] =
     '{expert_legend:hide},cssID;'.
     '{invisible_legend:hide},invisible,start,stop';  
 
+$GLOBALS['TL_DCA']['tl_content']['palettes']['textSection'] =
+    '{type_legend},type;'.
+    '{layout_legend},textLayout,backgroundColor;'.
+    '{headline_legend},overheadline,headline;'.
+    '{text_legend},textOptional;'.
+    '{link_legend},url,linkTitle;'.
+    '{protected_legend:hide},protected;'.
+    '{expert_legend:hide},cssID;'.
+    '{invisible_legend:hide},invisible,start,stop';
+
 $GLOBALS['TL_DCA']['tl_content']['palettes']['contactForm'] =
 '{type_legend},type;'.
 '{layout_legend},formLayoutType;'.
@@ -168,6 +178,15 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['textPosition'] = [
     'sql' => "varchar(10) NOT NULL default 'left'"
 ];
 
+// Text Layout
+$GLOBALS['TL_DCA']['tl_content']['fields']['textLayout'] = [
+    'label' => ['Layout', 'Wide (full-width body text) or narrow (centered lede paragraph)'],
+    'inputType' => 'select',
+    'options' => ['wide' => 'Wide', 'narrow' => 'Narrow (centered)'],
+    'eval' => ['tl_class' => 'w50', 'includeBlankOption' => false],
+    'sql' => "varchar(10) NOT NULL default 'wide'"
+];
+
 // Background Color
 $GLOBALS['TL_DCA']['tl_content']['fields']['backgroundColor'] = [
     'label' => ['Background color', 'Choose background color for text section'],
@@ -234,6 +253,9 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['gridItems'] = [
     'inputType' => 'group',
     'palette' => ['singleSRC', 'headline', 'text', 'url', 'linkTitle'],
     'fields' => [
+        '&singleSRC' => [
+            'eval' => ['mandatory' => false]
+        ],
         '&headline' => [
             'label' => &$GLOBALS['TL_LANG']['MSCGRP']['title'],
             'eval' => ['tl_class' => "clr"]

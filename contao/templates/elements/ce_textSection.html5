@@ -1,0 +1,45 @@
+<?php
+    use Magmell\Contao\Basic\VHUGUtil;
+    VHUGUtil::include_css('bundles/cnctoolshop/css/elements/ce_textSection.scss|static');
+
+    if ($this->backgroundColor) {
+        $this->class .= ' ' . "bg-" . $this->backgroundColor;
+    }
+
+    $this->class .= ' ' . ($this->textLayout == 'narrow' ? 'narrow' : 'wide');
+?>
+
+<?php $this->extend('block_searchable'); ?>
+
+<?php $this->block('headline'); ?>
+<?php $this->endblock(); ?>
+
+<?php $this->block('content'); ?>
+
+<div class="inside">
+
+    <?php if ($this->overheadline): ?>
+        <p class="overheadline"><?= $this->overheadline ?></p>
+    <?php endif; ?>
+
+    <?php if ($this->headline): ?>
+        <<?= $this->hl ?> class="headline"><?= $this->headline ?></<?= $this->hl ?>>
+    <?php endif; ?>
+
+    <?php if ($this->textOptional): ?>
+        <div class="text-body">
+            <?= $this->textOptional ?>
+        </div>
+    <?php endif; ?>
+
+    <?php if ($this->url): ?>
+        <div class="buttons">
+            <a href="<?= $this->url ?>" class="button" title="<?= $this->linkTitle ?>">
+                <?= $this->linkTitle ?>
+            </a>
+        </div>
+    <?php endif; ?>
+
+</div>
+
+<?php $this->endblock(); ?>
