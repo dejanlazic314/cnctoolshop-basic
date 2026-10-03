@@ -35,6 +35,9 @@
             <trans-unit id="CTE.textSection.0">
                 <source>Text Section</source>
             </trans-unit>
+            <trans-unit id="CTE.imageSlider.0">
+                <source>Image Slider</source>
+            </trans-unit>
         </body>
     </file>
 </xliff>

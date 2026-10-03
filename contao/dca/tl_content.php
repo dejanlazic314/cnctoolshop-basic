@@ -109,6 +109,14 @@ $GLOBALS['TL_DCA']['tl_content']['palettes']['machineSpecs'] =
     '{expert_legend:hide},cssID;'.
     '{invisible_legend:hide},invisible,start,stop';
 
+$GLOBALS['TL_DCA']['tl_content']['palettes']['imageSlider'] =
+    '{type_legend},type;'.
+    '{headline_legend},headline;'.
+    '{gallery_legend},multiSRC;'.
+    '{protected_legend:hide},protected;'.
+    '{expert_legend:hide},cssID;'.
+    '{invisible_legend:hide},invisible,start,stop';
+
 // Subpalettes - dinamički prikazuje polja
 // Override add image subpallete
 $GLOBALS['TL_DCA']['tl_content']['subpalettes']['addImage'] = 'singleSRC';
@@ -397,7 +405,11 @@ class tl_content_ab extends tl_content
                 case 'logoClients':
                     $GLOBALS['TL_DCA'][$dc->table]['fields'][$dc->field]['eval']['isGallery'] = true;
                     $GLOBALS['TL_DCA'][$dc->table]['fields'][$dc->field]['eval']['extensions'] = '%contao.image.valid_extensions%';
-                    break;                    
+                    break;
+                case 'imageSlider':
+                    $GLOBALS['TL_DCA'][$dc->table]['fields'][$dc->field]['eval']['isGallery'] = true;
+                    $GLOBALS['TL_DCA'][$dc->table]['fields'][$dc->field]['eval']['extensions'] = '%contao.image.valid_extensions%';
+                    break;
             }
 
             return $varValue;
