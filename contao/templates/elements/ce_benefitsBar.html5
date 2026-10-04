@@ -1,0 +1,53 @@
+<?php
+    use Magmell\Contao\Basic\VHUGUtil;
+    VHUGUtil::include_css('bundles/cnctoolshop/css/elements/ce_benefitsBar.scss|static');
+
+    if ($this->singleSRC) {
+        $this->class .= ' has-image';
+    }
+?>
+
+<?php $this->extend('block_searchable'); ?>
+<?php $this->block('headline'); ?>
+<?php $this->endblock(); ?>
+
+<?php $this->block('content'); ?>
+<div class="inside">
+
+    <?php if ($this->overheadline || $this->headline): ?>
+    <div class="section-head">
+        <?php if ($this->overheadline): ?>
+            <p class="eyebrow"><?= $this->overheadline ?></p>
+        <?php endif; ?>
+
+        <?php if ($this->headline): ?>
+            <<?= $this->hl ?> class="headline"><?= $this->headline ?></<?= $this->hl ?>>
+        <?php endif; ?>
+    </div>
+    <?php endif; ?>
+
+    <div class="benefits-row">
+    <?php foreach ($this->items as $item): ?>
+        <div class="benefit">
+            <?php if (!empty($item['icon'])): ?>
+                <span class="benefit-icon">{{file_vendor::dejanlazic314/cnctoolshop-basic/public/icons/benefit-<?= $item['icon'] ?>.html5}}</span>
+            <?php endif; ?>
+
+            <div class="benefit-text">
+                <span class="benefit-title"><?= $item['title'] ?></span>
+                <?php if (!empty($item['text'])): ?>
+                    <span class="benefit-subtitle"><?= $item['text'] ?></span>
+                <?php endif; ?>
+            </div>
+        </div>
+    <?php endforeach; ?>
+    </div>
+
+</div>
+
+<?php if ($this->singleSRC): ?>
+<figure class="benefits-media">
+    {{picture::<?= $this->singleSRC ?>?size=_herosectionbg}}
+</figure>
+<?php endif; ?>
+<?php $this->endblock(); ?>

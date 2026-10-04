@@ -38,6 +38,9 @@
             <trans-unit id="CTE.imageSlider.0">
                 <source>Image Slider</source>
             </trans-unit>
+            <trans-unit id="CTE.benefitsBar.0">
+                <source>Benefits Bar</source>
+            </trans-unit>
         </body>
     </file>
 </xliff>

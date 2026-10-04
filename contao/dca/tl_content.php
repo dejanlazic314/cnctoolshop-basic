@@ -117,6 +117,14 @@ $GLOBALS['TL_DCA']['tl_content']['palettes']['imageSlider'] =
     '{expert_legend:hide},cssID;'.
     '{invisible_legend:hide},invisible,start,stop';
 
+$GLOBALS['TL_DCA']['tl_content']['palettes']['benefitsBar'] =
+    '{type_legend},type,overheadline,headline;'.
+    '{items_legend},benefitsItems;'.
+    '{image_legend},singleSRC;'.
+    '{protected_legend:hide},protected;'.
+    '{expert_legend:hide},cssID;'.
+    '{invisible_legend:hide},invisible,start,stop';
+
 // Subpalettes - dinamički prikazuje polja
 // Override add image subpallete
 $GLOBALS['TL_DCA']['tl_content']['subpalettes']['addImage'] = 'singleSRC';
@@ -128,6 +136,7 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['url']['eval']['mandatory'] = false;
 
 # Callbacks
 $GLOBALS['TL_DCA']['tl_content']['fields']['multiSRC']['load_callback'][] = array('tl_content_ab', 'setMultiSrcFlags');
+$GLOBALS['TL_DCA']['tl_content']['fields']['singleSRC']['load_callback'][] = array('tl_content_ab', 'setSingleSrcFlags');
 
 // Fields
 // Overheadline
@@ -385,6 +394,48 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['machineItems'] = [
     ],
 ];
 
+// Benefits Bar — icon + short title + subtitle row over a background image
+$GLOBALS['TL_DCA']['tl_content']['fields']['benefitsItems'] = [
+    'inputType' => 'group',
+    'palette' => ['icon', 'title', 'text'],
+    'fields' => [
+        'icon' => [
+            'label' => ['Icon (optional)', 'Icon shown left of the text'],
+            'inputType' => 'select',
+            'options' => ['target', 'bolt', 'shield', 'clock', 'machine', 'layers', 'wrench'],
+            'reference' => [
+                'target' => 'Target (precision/tolerances)',
+                'bolt' => 'Bolt (speed/turnaround)',
+                'shield' => 'Shield (quality/guarantee)',
+                'clock' => 'Clock (experience/years)',
+                'machine' => 'Machine',
+                'layers' => 'Layers (services)',
+                'wrench' => 'Wrench',
+            ],
+            'eval' => ['mandatory' => false, 'includeBlankOption' => true, 'tl_class' => 'w50 clr'],
+            'sql' => "varchar(32) NOT NULL default ''"
+        ],
+        'title' => [
+            'label' => ['Title', 'e.g. "Precizna obrada" or "7 godina"'],
+            'inputType' => 'text',
+            'eval' => ['mandatory' => true, 'maxlength' => 64, 'tl_class' => 'w50'],
+            'sql' => "varchar(64) NOT NULL default ''"
+        ],
+        'text' => [
+            'label' => ['Subtitle', 'e.g. "+/- 0.01 mm"'],
+            'inputType' => 'text',
+            'eval' => ['mandatory' => false, 'maxlength' => 120, 'tl_class' => 'clr'],
+            'sql' => "varchar(120) NOT NULL default ''"
+        ],
+    ],
+    'min' => 1,
+    'max' => 4,
+    'sql' => [
+        'type' => 'blob',
+        'notnull' => false,
+    ],
+];
+
 class tl_content_ab extends tl_content
 {
 
@@ -414,5 +465,21 @@ class tl_content_ab extends tl_content
 
             return $varValue;
         }
+    }
+
+    /**
+     * Background image is optional for the Benefits Bar
+     * @param mixed $varValue
+     * @param Contao\DataContainer $dc
+     * @return mixed
+     */
+    public function setSingleSrcFlags($varValue, DataContainer $dc)
+    {
+        if ($dc->activeRecord && $dc->activeRecord->type === 'benefitsBar') {
+            $GLOBALS['TL_DCA'][$dc->table]['fields'][$dc->field]['eval']['mandatory'] = false;
+            $GLOBALS['TL_DCA'][$dc->table]['fields'][$dc->field]['eval']['extensions'] = '%contao.image.valid_extensions%';
+        }
+
+        return $varValue;
     }
 }
