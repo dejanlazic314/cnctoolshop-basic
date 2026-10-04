@@ -41,5 +41,6 @@ class Plugin implements BundlePluginInterface, ConfigPluginInterface
     public function registerContainerConfiguration(LoaderInterface $loader, array $config)
     {
         $loader->load('@CnctoolshopBundle/config/config.yaml');
+        $loader->load('@CnctoolshopBundle/config/services.yaml');
     }
 }

@@ -138,6 +138,9 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['url']['eval']['mandatory'] = false;
 $GLOBALS['TL_DCA']['tl_content']['fields']['multiSRC']['load_callback'][] = array('tl_content_ab', 'setMultiSrcFlags');
 $GLOBALS['TL_DCA']['tl_content']['fields']['singleSRC']['load_callback'][] = array('tl_content_ab', 'setSingleSrcFlags');
 
+// Only custom elements can be selected — see Cnctoolshop\EventListener\DataContainer\ContentElementTypeListener
+$GLOBALS['TL_DCA']['tl_content']['fields']['type']['default'] = 'textSection';
+
 // Fields
 // Overheadline
 $GLOBALS['TL_DCA']['tl_content']['fields']['overheadline'] = array
